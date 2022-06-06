@@ -17,7 +17,7 @@
     max-width: 1440px;
     margin: 0 auto;
     overflow: hidden;
-    padding: 0 1rem;
+    padding: 2rem 1rem;
   }
 }
 </style>
