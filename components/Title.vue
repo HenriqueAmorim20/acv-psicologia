@@ -55,4 +55,16 @@ header {
     margin-top: 0.5rem;
   }
 }
+
+@media only screen and (max-width: 500px) {
+  header {
+    h1 {
+      font-size: 1.7rem;
+    }
+
+    h2 {
+      font-size: 0.9rem;
+    }
+  }
+}
 </style>
