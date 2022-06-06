@@ -1,4 +1,4 @@
-<!-- <script setup lang="ts"></script> -->
+<script setup lang="ts"></script>
 
 <template>
   <div class="index" id="indexPage">
@@ -10,4 +10,14 @@
   </div>
 </template>
 
-<!-- <style lang="scss" scoped></style> -->
+<style lang="scss" scoped>
+.index {
+  padding: 0 1rem;
+  > * {
+    min-height: 100vh;
+    max-width: 1440px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+}
+</style>
