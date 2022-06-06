@@ -63,7 +63,7 @@ import { Icon } from "@iconify/vue";
 
   .social-media {
     position: absolute;
-    inset: auto 0 2rem auto;
+    inset: auto 1rem 2rem auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -123,7 +123,7 @@ import { Icon } from "@iconify/vue";
       }
     }
     .social-media {
-      inset: auto -0.5rem 0.5rem auto;
+      inset: auto 0.5rem 1.5rem auto;
       flex-direction: row;
       .link-icon {
         margin: 0 0.4rem;

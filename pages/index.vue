@@ -12,12 +12,12 @@
 
 <style lang="scss" scoped>
 .index {
-  padding: 0 1rem;
   > * {
     min-height: 100vh;
     max-width: 1440px;
     margin: 0 auto;
     overflow: hidden;
+    padding: 0 1rem;
   }
 }
 </style>
