@@ -47,6 +47,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 
     p {
       font-size: clamp(1.1rem, 1.5vw, 1.4rem);
