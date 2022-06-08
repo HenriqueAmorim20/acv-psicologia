@@ -7,6 +7,7 @@
     <SectionsPsicoterapia />
     <SectionsConsultorio />
     <SectionsVideos />
+    <SectionsPublicacoes />
   </div>
 </template>
 
