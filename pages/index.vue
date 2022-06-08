@@ -3,10 +3,10 @@
 <template>
   <div class="index" id="indexPage">
     <SectionsHome />
+    <SectionsSobre />
     <SectionsPsicoterapia />
     <SectionsConsultorio />
     <SectionsVideos />
-    <SectionsAgendar />
   </div>
 </template>
 
