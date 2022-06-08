@@ -76,7 +76,6 @@
       background-size: cover;
       background-position: center;
       border-radius: 5px;
-      z-index: 1;
     }
     div::before {
       content: "";
@@ -85,7 +84,6 @@
       border-radius: 5px;
       border: 2px solid var(--background);
       position: absolute;
-      z-index: -1;
     }
   }
 }
