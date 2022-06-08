@@ -60,7 +60,7 @@
   background-position: center;
   color: var(--secondary);
   min-height: fit-content;
-  padding: 3rem 0 10rem;
+  padding: 3rem 1rem 10rem;
 
   .top {
     display: flex;
@@ -83,14 +83,14 @@
 
     .top-info {
       h1 {
-        font-size: 3.5rem;
+        font-size: clamp(2.8rem, 4vw, 3.5rem);
         margin: 1rem 0;
         font-weight: normal;
       }
 
       p {
-        font-size: 1.2rem;
-        line-height: 2rem;
+        font-size: clamp(1rem, 1.4vw, 1.2rem);
+        line-height: clamp(1.5rem, 2.3vw, 2rem);
       }
     }
   }
@@ -109,11 +109,11 @@
       cursor: pointer;
 
       h1 {
-        font-size: 1.4rem;
+        font-size: clamp(1.2rem, 2.5vw, 1.4rem);
       }
 
       span {
-        font-size: 1.2rem;
+        font-size: clamp(1rem, 1.6vw, 1.2rem);
       }
     }
 
@@ -127,7 +127,35 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-color: rgba(241, 241, 241, 0.5);
+  background-color: rgba(241, 241, 241, 0.779);
   z-index: 0;
+}
+
+@media only screen and (max-width: 800px) {
+  .sobre {
+    .top {
+      flex-direction: column;
+
+      img {
+        margin: 0;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 580px) {
+  .sobre {
+    .bottom {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .sobre {
+    .bottom {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
 }
 </style>
