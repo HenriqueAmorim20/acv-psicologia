@@ -39,6 +39,9 @@ import { Icon } from "@iconify/vue";
 
 <style lang="scss" scoped>
 .homeSection {
+  background-image: url("/backgrounds/background.jpg");
+  background-size: cover;
+  background-position: center;
   position: relative;
   display: flex;
   align-items: center;
@@ -136,6 +139,13 @@ import { Icon } from "@iconify/vue";
       width: 150px;
       margin: 0 0 0 0.8rem;
     }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .homeSection {
+    background-image: url("/backgrounds/background-mobile.jpg");
+    background-position: right;
   }
 }
 </style>

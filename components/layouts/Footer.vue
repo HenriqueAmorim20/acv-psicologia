@@ -63,7 +63,7 @@ function scrollTop() {
   justify-content: space-between;
   align-items: center;
   background-color: var(--background);
-  color: var(--secondary);
+  color: var(--primary);
   padding: 1.5rem 2rem 2.5rem 0rem;
 
   .left {
@@ -80,7 +80,7 @@ function scrollTop() {
 
       h1 {
         font-size: 2rem;
-        font-weight: normal;
+        font-family: "WorkSansThin";
       }
     }
 
@@ -146,7 +146,6 @@ function scrollTop() {
       }
     }
     .right {
-      // flex-direction: column;
       text-align: center;
       align-items: center;
     }
