@@ -58,11 +58,8 @@ const videos: Array<Video> = [
   justify-content: center;
   background-color: var(--secondary);
   color: var(--background);
-  padding: 3rem 0rem;
-
-  h1::after {
-    background-color: var(--background);
-  }
+  min-height: fit-content;
+  padding: 5rem 0rem;
 
   section {
     margin: 5rem 0;

@@ -23,14 +23,14 @@ let qtd: any = ref(4);
 
 <style lang="scss" scoped>
 .consultorio {
+  min-height: fit-content;
   background-color: var(--background);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   color: var(--secondary);
-  padding: 3rem 2rem;
-
+  padding: 5rem 2rem;
   .photos {
     display: grid;
     grid-template-columns: repeat(4, 1fr);

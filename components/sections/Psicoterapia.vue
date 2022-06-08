@@ -50,6 +50,7 @@
     justify-content: center;
 
     p {
+      font-family: "WorkSansLight";
       font-size: clamp(1.1rem, 1.5vw, 1.4rem);
       text-indent: 2rem;
       margin: 1rem 0;
