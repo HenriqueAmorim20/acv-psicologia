@@ -58,7 +58,7 @@
   background-image: url("/sobre/bg.jpg");
   background-size: cover;
   background-position: center;
-  color: var(--secondary);
+  color: var(--primary);
   min-height: fit-content;
   padding: 3rem 1rem 10rem;
 
@@ -85,12 +85,14 @@
       h1 {
         font-size: clamp(2.8rem, 4vw, 3.5rem);
         margin: 1rem 0;
+        font-family: "WorkSansThin";
         font-weight: normal;
       }
 
       p {
         font-size: clamp(1rem, 1.4vw, 1.2rem);
         line-height: clamp(1.5rem, 2.3vw, 2rem);
+        color: var(--secondary);
       }
     }
   }
@@ -99,7 +101,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
-    margin-top: 3rem;
+    margin-top: 3.5rem;
     z-index: 1;
 
     div {
@@ -110,10 +112,13 @@
 
       h1 {
         font-size: clamp(1.2rem, 2.5vw, 1.4rem);
+        font-family: "WorkSansThin";
+        margin-bottom: 0.5rem;
       }
 
       span {
         font-size: clamp(1rem, 1.6vw, 1.2rem);
+        color: var(--secondary);
       }
     }
 
