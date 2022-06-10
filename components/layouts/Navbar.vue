@@ -58,11 +58,10 @@ function onDestroy() {
 function handleNavbar() {
   const navbarEl = document.querySelector(".navbar") as HTMLElement;
 
-  if (!drawer && !(window.scrollY < window.innerHeight / 3)) {
-    navbarEl.classList.add("navbar-blured");
-  } else {
-    navbarEl.classList.remove("navbar-blured");
-  }
+  navbarEl.style.backgroundColor =
+    drawer || window.scrollY < window.innerHeight / 3
+      ? "transparent"
+      : "var(--background)";
 
   navbarEl.style.transform =
     // drawer opened
@@ -166,9 +165,8 @@ function navigateTo(item: MenuItem): void {
   justify-content: space-between;
   padding: 0.4rem 1.5rem 0.4rem 0;
   z-index: 4;
-  transition: transform 0.4s ease-in-out, backdrop-filter 0.4s ease-in-out;
+  transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
   height: 70px;
-  background-color: "transparent";
 
   .navbar-logo {
     width: 100px;
@@ -208,11 +206,6 @@ function navigateTo(item: MenuItem): void {
     }
   }
 }
-
-.navbar-blured {
-  backdrop-filter: blur(10px);
-}
-
 .drawer {
   position: fixed;
   inset: 0;
