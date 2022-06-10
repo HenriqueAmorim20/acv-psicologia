@@ -56,13 +56,26 @@ function onDestroy() {
 }
 
 function handleNavbar() {
-  const navScrollEl = document.querySelector(".navbar-scroll") as HTMLElement;
-  navScrollEl.style.transform =
-    scrollPosition > window.scrollY &&
-    window.scrollY > window.innerHeight &&
-    !drawer
-      ? "translateY(0)"
-      : "translateY(-105%)";
+  const navbarEl = document.querySelector(".navbar") as HTMLElement;
+
+  if (!drawer && !(window.scrollY < window.innerHeight / 3)) {
+    navbarEl.classList.add("navbar-blured");
+  } else {
+    navbarEl.classList.remove("navbar-blured");
+  }
+
+  navbarEl.style.transform =
+    // drawer opened
+    drawer ||
+    // drawer closed and current scroll is smaller than a third of the viewport height
+    (!drawer && window.scrollY < window.innerHeight / 3) ||
+    // drawer closed, scroll direction is up and current scroll is smaller than a third of the viewport height
+    (!drawer &&
+      scrollPosition >= window.scrollY &&
+      window.scrollY > window.innerHeight / 3)
+      ? "translateY(0)" // shows navbar
+      : "translateY(-105%)"; // hides navbar
+
   scrollPosition = window.scrollY;
 }
 
@@ -70,6 +83,7 @@ function handleNavbar() {
  * Handles the drawer visibility and menu icon animation
  */
 function toggleDrawer(): void {
+  const bodyEl = document.querySelector("body");
   const navbarEl = document.querySelector(".navbar-normal") as HTMLElement;
   const menuIconBars: any = document.querySelectorAll(".menu-icon-bar");
   const drawerElement: any = document.querySelector(".drawer");
@@ -82,7 +96,7 @@ function toggleDrawer(): void {
   logoElement.classList.toggle("navbar-logo-active");
 
   drawer = !drawer;
-  navbarEl.style.position = drawer ? "fixed" : "absolute";
+  bodyEl.style.overflow = drawer ? "hidden" : "auto";
   handleNavbar();
 }
 
@@ -118,20 +132,6 @@ function navigateTo(item: MenuItem): void {
       </div>
     </nav>
 
-    <nav class="navbar navbar-scroll">
-      <img
-        @click="navigateTo({ name: null, path: '/', id: 'homeSection' })"
-        class="navbar-logo"
-        id="navbar-logo"
-        src="/logos/logo-white.png"
-        alt="Ana Carolina Villaça" />
-      <div class="menu-icon" @click="toggleDrawer()">
-        <span class="menu-icon-bar"></span>
-        <span class="menu-icon-bar"></span>
-        <span class="menu-icon-bar"></span>
-      </div>
-    </nav>
-
     <div class="drawer">
       <span
         v-for="(item, index) in menuItems"
@@ -157,7 +157,7 @@ function navigateTo(item: MenuItem): void {
 
 <style lang="scss" scoped>
 .navbar {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -165,9 +165,10 @@ function navigateTo(item: MenuItem): void {
   align-items: center;
   justify-content: space-between;
   padding: 0.4rem 1.5rem 0.4rem 0;
-  z-index: 2;
-  transition: position 0.5s ease;
+  z-index: 4;
+  transition: transform 0.4s ease-in-out, backdrop-filter 0.4s ease-in-out;
   height: 70px;
+  background-color: "transparent";
 
   .navbar-logo {
     width: 100px;
@@ -208,18 +209,8 @@ function navigateTo(item: MenuItem): void {
   }
 }
 
-.navbar-scroll {
-  position: fixed;
-  background-color: var(--secondary);
-  transform: translateY(-80px);
-  transition: transform 0.5s ease;
-  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.433);
-
-  .menu-icon {
-    .menu-icon-bar {
-      background-color: var(--background);
-    }
-  }
+.navbar-blured {
+  backdrop-filter: blur(10px);
 }
 
 .drawer {
@@ -234,8 +225,9 @@ function navigateTo(item: MenuItem): void {
   padding: 0 10%;
   visibility: hidden;
   opacity: 0;
-  z-index: 1;
+  z-index: 3;
   transition: visibility 0.5s, opacity 0.5s ease-in-out;
+  font-family: "WorkSansThin";
 
   .menu-item {
     font-size: 3rem;
