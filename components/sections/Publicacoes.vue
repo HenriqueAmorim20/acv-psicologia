@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Icon } from "@iconify/vue";
 interface Article {
+  id: number;
   date: Date;
   image: string;
   title: string;
@@ -9,30 +10,35 @@ interface Article {
 
 const articles: Array<Article> = [
   {
+    id: 1,
     date: new Date(2020, 6, 1),
     image: "/consultorio/1.jpeg",
     title: "O impacto da ansiedade",
     desc: "Lorem ipsum dolor sit amet bla bla bla bla, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e.",
   },
   {
+    id: 2,
     date: new Date(2020, 6, 2),
     image: "/consultorio/2.jpeg",
     title: "Lorem ipsum dolor sit amet bla bla bla bla",
     desc: "Lorem ipsum dolor sit amet bla bla bla bla, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e.",
   },
   {
+    id: 3,
     date: new Date(2020, 6, 3),
     image: "/consultorio/3.jpeg",
     title: "Síndrome de Burnout",
     desc: "Lorem ipsum dolor sit amet bla bla bla bla, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e.",
   },
   {
+    id: 4,
     date: new Date(2020, 6, 4),
     image: "/consultorio/4.jpeg",
     title: "Lorem ipsum dolor sit amet bla bla bla bla",
     desc: "Lorem ipsum dolor sit amet bla bla bla bla, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e.",
   },
   {
+    id: 5,
     date: new Date(2020, 6, 5),
     image: "/consultorio/5.jpeg",
     title: "Lorem ipsum dolor sit amet bla bla bla bla",
@@ -67,17 +73,23 @@ function formatText(text: string, length: number) {
           <h1>{{ formatText(article.title, 25) }}</h1>
           <p>{{ formatText(article.desc, 155) }}</p>
           <div class="link">
-            <span>Ler mais</span>
+            <NuxtLink :to="`/publicacoes/${article.id}`" class="text">
+              Ler Mais
+            </NuxtLink>
             <Icon class="icon" icon="akar-icons:chevron-right" />
           </div>
         </div>
       </div>
     </div>
+    <NuxtLink to="/publicacoes" class="btn">ver todas</NuxtLink>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .publicacoes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: var(--background);
   color: var(--secondary);
   .articles {
@@ -136,6 +148,11 @@ function formatText(text: string, length: number) {
           text-transform: capitalize;
           cursor: pointer;
           width: fit-content;
+
+          .text {
+            color: var(--background);
+            text-decoration: none;
+          }
 
           .icon {
             margin-left: 0.5rem;
@@ -199,6 +216,17 @@ function formatText(text: string, length: number) {
     .article:nth-child(5) {
       grid-area: fifth;
     }
+  }
+
+  .btn {
+    border: 1px solid var(--secondary);
+    background-color: var(--secondary);
+    color: var(--background);
+  }
+
+  .btn:hover {
+    background-color: var(--background);
+    color: var(--secondary);
   }
 }
 
