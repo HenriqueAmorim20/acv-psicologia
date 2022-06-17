@@ -17,7 +17,7 @@ function scrollTop() {
         Especialista em bla bla bla bla bla. Profissional de psicoterapia com x
         anos de experiência.
       </span>
-      <b class="crp">CPR: 01/12930</b>
+      <b class="crp">CRP: 01/12930</b>
       <div class="social-media">
         <a
           class="link"
@@ -39,13 +39,12 @@ function scrollTop() {
           target="_blank">
           <Icon class="link-icon" icon="ant-design:youtube-outlined" />
         </a>
-        <span style="flex: 1 1 auto"></span>
       </div>
     </section>
     <img src="/logos/logo-white.png" alt="" />
     <section class="right">
       <span class="scrollTop" @click="scrollTop()">
-        Ir para o topo <Icon class="scroll-icon" icon="akar-icons:chevron-up" />
+        Ir para o topo <Icon class="scroll-icon" icon="bi:arrow-bar-up" />
       </span>
       <span class="rights">
         Todos os direitos reservados a Ana Carolina Villaça &copy;
@@ -57,7 +56,8 @@ function scrollTop() {
           href="http://melohenrique.com"
           target="_blank"
           rel="noopener noreferrer">
-          Henrique Melo
+          <span>Henrique Melo</span>
+          <Icon class="icon" icon="mdi:dev-to" />
         </a>
       </span>
     </section>
@@ -69,7 +69,6 @@ footer {
   display: grid;
   grid-template-columns: 3fr 1fr 3fr;
   padding: 3rem 4rem;
-  // max-width: 1300px;
   margin: 2rem auto 0;
   border-top: 1px solid lightgray;
   background-color: var(--secondary);
@@ -80,8 +79,8 @@ footer {
     flex-direction: column;
     .name {
       text-transform: capitalize;
-      font-weight: normal;
-      font-size: 2rem;
+      font-family: "WorkSansThin";
+      font-size: 2.5rem;
     }
 
     .description {
@@ -89,6 +88,12 @@ footer {
       font-size: 1rem;
       max-width: 400px;
       margin: 1rem 0;
+    }
+
+    .crp {
+      font-family: "WorkSansLight";
+      font-size: 1rem;
+      font-weight: normal;
     }
 
     .social-media {
@@ -128,7 +133,9 @@ footer {
       display: flex;
       align-items: center;
       cursor: pointer;
-      font-family: "WorkSansRegular";
+      font-family: "WorkSansThin";
+      font-size: 1.3rem;
+      font-weight: normal;
       .scroll-icon {
         margin-left: 0.5rem;
       }
@@ -148,9 +155,22 @@ footer {
     }
 
     .creator {
+      display: flex;
+      align-items: center;
       a {
+        display: flex;
+        align-items: center;
         color: var(--backgorund);
         margin-left: 0.5rem;
+        text-decoration: none;
+
+        span {
+          font-family: "WorkSansRegular";
+        }
+        .icon {
+          font-size: 1.7rem;
+          margin-left: 0.5rem;
+        }
       }
       a:hover {
         opacity: 0.8;

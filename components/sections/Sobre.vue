@@ -7,12 +7,13 @@ import { Icon } from "@iconify/vue";
     <Title
       title="sobre mim"
       subtitle="um pouco da minha história"
-      color="var(--secondary)" />
+      color="var(--secondary)"
+      style="z-index: 2" />
     <div class="sobre-content">
       <div class="image" />
       <aside>
         <h1 class="name">Ana Carolina Villaça</h1>
-        <b class="crp">CPR: 01/12930</b>
+        <b class="crp">CRP: 01/12930</b>
         <span class="desc">
           Especialista em bla bla bla bla bla. Profissional de psicoterapia com
           x anos de experiência.
@@ -58,6 +59,7 @@ import { Icon } from "@iconify/vue";
 
 <style lang="scss" scoped>
 .sobre {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -68,6 +70,7 @@ import { Icon } from "@iconify/vue";
   .sobre-content {
     display: flex;
     padding: 3rem 1rem;
+    z-index: 2;
 
     aside {
       margin: 0 3rem;
@@ -83,8 +86,7 @@ import { Icon } from "@iconify/vue";
       }
 
       .crp {
-        font-size: 1.2rem;
-        font-family: "WorkSansLight";
+        font-size: 1rem;
         margin-bottom: 0.5rem;
       }
 
@@ -141,6 +143,13 @@ import { Icon } from "@iconify/vue";
       box-shadow: 3px 3px 3px lightgray;
     }
   }
+}
+
+.sobre::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 @media only screen and (max-width: 870px) {

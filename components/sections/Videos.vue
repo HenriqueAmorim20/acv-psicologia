@@ -13,19 +13,19 @@ const videos: Array<Video> = [
     titulo: "Relacionamento Interpessoal/Amoroso",
     desc: "lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit amet...",
     urlFrame: "https://www.youtube.com/embed/Hkb379_CnRk",
-    url: "",
+    url: "https://www.youtube.com/watch?v=Hkb379_CnRk",
   },
   {
     titulo: "Síndrome de Burnout",
     desc: "lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit amet consectetur adipisicing consectetur adipisicing consectetur adipisicing consectetur adipisicing...",
     urlFrame: "https://www.youtube.com/embed/BRGt6H6fyIQ",
-    url: "",
+    url: "https://www.youtube.com/watch?v=BRGt6H6fyIQ",
   },
   {
     titulo: "Autoestima",
     desc: "lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit amet consectetur adipisicing elit",
     urlFrame: "https://www.youtube.com/embed/pcdHjq1UOr8",
-    url: "",
+    url: "https://www.youtube.com/watch?v=pcdHjq1UOr8",
   },
 ];
 </script>

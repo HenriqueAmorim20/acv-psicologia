@@ -32,11 +32,6 @@ const menuItems: Array<MenuItem> = [
     path: "/",
   },
   {
-    name: "agendar",
-    id: "agendarSection",
-    path: "/",
-  },
-  {
     name: "publicações",
     id: "publicacoesSection",
     path: "/",
