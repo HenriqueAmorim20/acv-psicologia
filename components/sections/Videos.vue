@@ -26,8 +26,8 @@ const videos: Array<Video> = [
 <template>
   <div class="videos" id="videosSection">
     <Title
-      title="vídeos"
-      subtitle="confira alguns dos meus principais vídeos e também meu canal no youtube" />
+      title="meus vídeos"
+      subtitle="confira meus principais vídeos do youtube" />
     <section>
       <iframe
         v-for="(item, index) in videos"

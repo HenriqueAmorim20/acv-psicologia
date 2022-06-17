@@ -104,10 +104,10 @@ import { Icon } from "@iconify/vue";
           align-items: center;
           background-color: var(--secondary);
           color: var(--background);
-          font-size: 1.5rem;
+          font-size: 1.4rem;
           border-radius: 100%;
           aspect-ratio: 1;
-          padding: 0.5rem;
+          padding: 0.6rem;
           margin-right: 1rem;
           box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.319);
         }

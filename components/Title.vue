@@ -63,8 +63,9 @@ header {
   .icon::after,
   .icon::before {
     display: block;
-    content: "∾∾∾∾";
-    letter-spacing: -3px;
+    content: "";
+    width: 50px;
+    border-bottom: 1px solid var(--dynamic-color);
     margin: 0 0.5rem;
   }
 }

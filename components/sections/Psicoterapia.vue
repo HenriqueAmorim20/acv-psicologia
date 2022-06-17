@@ -5,7 +5,7 @@
     <section>
       <Title
         title="psicoterapia"
-        subtitle="conheça mais sobre tudo por trás do processo da psicoterapia" />
+        subtitle="conheça mais sobre o processo da psicoterapia" />
       <p>
         The purpose of lorem ipsum is to create a natural looking block of text
         (sentence, paragraph, page, etc.) that doesn't distract from the layout.

@@ -70,7 +70,7 @@ footer {
   grid-template-columns: 3fr 1fr 3fr;
   padding: 3rem 1rem;
   max-width: 1300px;
-  margin: 0 auto;
+  margin: 4rem auto 0;
   border-top: 1px solid lightgray;
 
   .left {

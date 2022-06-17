@@ -55,7 +55,7 @@ function formatText(text: string, length: number) {
   <div class="publicacoes" id="publicacoesSection">
     <Title
       title="publicações"
-      subtitle="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium."
+      subtitle="assuntos relevantes na psicoterapia"
       color="var(--secondary)" />
     <div class="articles">
       <div class="article" v-for="(article, index) in articles" :key="index">
