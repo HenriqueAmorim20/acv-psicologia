@@ -48,7 +48,7 @@ header {
     font-size: 1.1rem;
     max-width: 450px;
     margin-top: 0.5rem;
-    font-family: "WorkSansThin";
+    font-family: "WorkSansLight";
     font-weight: normal;
     opacity: 0.7;
   }

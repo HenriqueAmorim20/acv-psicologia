@@ -42,7 +42,7 @@ function scrollTop() {
         <span style="flex: 1 1 auto"></span>
       </div>
     </section>
-    <img src="/logos/logo.png" alt="" />
+    <img src="/logos/logo-white.png" alt="" />
     <section class="right">
       <span class="scrollTop" @click="scrollTop()">
         Ir para o topo <Icon class="scroll-icon" icon="akar-icons:chevron-up" />
@@ -68,22 +68,24 @@ function scrollTop() {
 footer {
   display: grid;
   grid-template-columns: 3fr 1fr 3fr;
-  padding: 3rem 1rem;
-  max-width: 1300px;
+  padding: 3rem 4rem;
+  // max-width: 1300px;
   margin: 2rem auto 0;
   border-top: 1px solid lightgray;
+  background-color: var(--secondary);
+  color: var(--background);
 
   .left {
     display: flex;
     flex-direction: column;
     .name {
-      font-family: "WorkSansThin";
       text-transform: capitalize;
+      font-weight: normal;
       font-size: 2rem;
     }
 
     .description {
-      font-family: "WorkSansThinItalic";
+      font-family: "WorkSansLight";
       font-size: 1rem;
       max-width: 400px;
       margin: 1rem 0;
@@ -96,8 +98,8 @@ footer {
       .link {
         display: flex;
         align-items: center;
-        background-color: var(--secondary);
-        color: var(--background);
+        background-color: var(--background);
+        color: var(--secondary);
         font-size: 1.4rem;
         border-radius: 100%;
         aspect-ratio: 1;
@@ -133,7 +135,7 @@ footer {
     }
 
     .scrollTop:hover {
-      color: var(--secondary);
+      opacity: 0.8;
     }
 
     .rights {
@@ -142,23 +144,24 @@ footer {
       margin: 1rem 0;
       font-size: 1rem;
       text-align: right;
-      font-family: "WorkSansThin";
+      font-family: "WorkSansLight";
     }
 
     .creator {
       a {
-        color: var(--primary);
+        color: var(--backgorund);
         margin-left: 0.5rem;
       }
       a:hover {
-        color: var(--secondary);
+        opacity: 0.8;
       }
     }
   }
 }
 
-@media only screen and (max-width: 780px) {
+@media only screen and (max-width: 920px) {
   footer {
+    padding: 3rem 1rem;
     grid-template-columns: 1fr;
     gap: 2rem;
 
