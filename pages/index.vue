@@ -14,7 +14,7 @@
 <style lang="scss">
 .index {
   > * {
-    min-height: 100vh;
+    min-height: 90vh;
     overflow: hidden;
     padding: 2rem 1rem;
   }
@@ -27,7 +27,7 @@
     letter-spacing: 3px;
     padding: 0.5rem 2rem;
     transition: 0.3s ease;
-    font-family: "WorkSansThin";
+    font-family: "WorkSansLight";
   }
 }
 </style>

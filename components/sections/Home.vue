@@ -39,6 +39,7 @@ import { Icon } from "@iconify/vue";
 
 <style lang="scss" scoped>
 .homeSection {
+  min-height: 100vh;
   background-image: url("/backgrounds/background.jpg");
   background-size: cover;
   background-position: center;

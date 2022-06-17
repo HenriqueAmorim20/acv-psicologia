@@ -1,165 +1,202 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { Icon } from "@iconify/vue";
+</script>
 
 <template>
   <div class="sobre" id="sobreSection">
     <Title
       title="sobre mim"
-      subtitle="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium."
-      color="var(--secondary)"
-      style="z-index: 1" />
-    <section class="top">
-      <img src="/sobre/perfil.png" alt="" />
-      <div class="top-info">
-        <h1>Ana Carolina Villaça</h1>
-        <p>
-          25 year old Digital Designer from Denmark. Former Digital Designer at
-          Y7K & Spring/Summer Copenhagen. Currently looking for a Full-time
-          Position.Y7K & Spring/Summer Copenhagen. Currently looking for a
-          Full-time Position.
-        </p>
-      </div>
-    </section>
-    <section class="bottom">
-      <div>
-        <h1>CRP</h1>
-        <span>01/12930</span>
-      </div>
-      <div>
-        <h1>instagram</h1>
-        <span>@psicologa_anacarolinavillaca</span>
-      </div>
-      <div>
-        <h1>whatsapp</h1>
-        <span>(61) 98117-0400</span>
-      </div>
-      <div>
-        <h1>email</h1>
-        <span>lalalla@gmail.com</span>
-      </div>
-      <div>
-        <h1>youtube</h1>
-        <span>/acvpsicologia</span>
-      </div>
-      <div>
-        <h1>experiência</h1>
-        <span>baixar currículo</span>
-      </div>
-    </section>
+      subtitle="um pouco da minha história"
+      color="var(--secondary)" />
+    <div class="sobre-content">
+      <div class="image" />
+      <aside>
+        <h1 class="name">Ana Carolina Villaça</h1>
+        <b class="crp">CPR: 01/12930</b>
+        <span class="desc">
+          Especialista em bla bla bla bla bla. Profissional de psicoterapia com
+          x anos de experiência.
+        </span>
+        <span class="desc">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </span>
+        <span class="desc">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </span>
+        <span class="desc">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum
+          dolor sit amet consectetur adipisicing elit.
+        </span>
+        <div class="social-media">
+          <a
+            class="link"
+            href="https://wa.me/5561981170400"
+            target="_blank"
+            rel="noopener noreferrer">
+            <Icon class="link-icon" icon="akar-icons:whatsapp-fill" />
+          </a>
+          <a
+            class="link"
+            href="https://www.instagram.com/psicologa_anacarolinavillaca/"
+            target="_blank"
+            rel="noopener noreferrer">
+            <Icon class="link-icon" icon="akar-icons:instagram-fill" />
+          </a>
+          <a
+            class="link"
+            href="https://www.youtube.com/channel/UCFq-F11A86ShC4ha-Crt8Yg"
+            target="_blank">
+            <Icon class="link-icon" icon="ant-design:youtube-outlined" />
+          </a>
+          <span style="flex: 1 1 auto"></span>
+          <button class="btn">baixar currículo</button>
+        </div>
+      </aside>
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .sobre {
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   background-image: url("/sobre/bg.jpg");
   background-size: cover;
   background-position: center;
-  color: var(--primary);
-  min-height: fit-content;
-  padding: 3rem 1rem 10rem;
-
-  .top {
+  background-repeat: no-repeat;
+  .sobre-content {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    max-width: 850px;
-    text-align: center;
-    z-index: 1;
-    margin-top: 4rem;
+    padding: 3rem 1rem;
 
-    img {
-      border-radius: 50%;
-      width: 300px;
-      aspect-ratio: 1;
-      object-fit: cover;
-      object-position: top;
-      margin-right: 4rem;
-      box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.396);
-    }
-
-    .top-info {
-      h1 {
-        font-size: clamp(2.8rem, 4vw, 3.5rem);
-        margin: 1rem 0;
-        font-family: "WorkSansThin";
-        font-weight: normal;
-      }
-
-      p {
-        font-size: clamp(1rem, 1.4vw, 1.2rem);
-        line-height: clamp(1.5rem, 2.3vw, 2rem);
-        color: var(--secondary);
-      }
-    }
-  }
-
-  .bottom {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 3.5rem;
-    z-index: 1;
-
-    div {
+    aside {
+      margin: 0 3rem;
+      max-width: 450px;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      cursor: pointer;
 
-      h1 {
-        font-size: clamp(1.2rem, 2.5vw, 1.4rem);
+      .name {
+        font-size: 3rem;
         font-family: "WorkSansThin";
+        font-weight: 200;
+        margin-bottom: 1rem;
+      }
+
+      .crp {
+        font-size: 1.2rem;
+        font-family: "WorkSansLight";
         margin-bottom: 0.5rem;
       }
 
-      span {
-        font-size: clamp(1rem, 1.6vw, 1.2rem);
-        color: var(--secondary);
+      .desc {
+        font-family: "WorkSansThin";
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+
+      .social-media {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        margin-top: 1rem;
+        .link {
+          display: flex;
+          align-items: center;
+          background-color: var(--secondary);
+          color: var(--background);
+          font-size: 1.5rem;
+          border-radius: 100%;
+          aspect-ratio: 1;
+          padding: 0.5rem;
+          margin-right: 1rem;
+          box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.319);
+        }
+
+        .link:hover {
+          opacity: 0.8;
+        }
+
+        button {
+          background-color: var(--secondary);
+          color: var(--background);
+          border: 1px solid var(--secondary);
+          border-radius: 20px;
+        }
+
+        button:hover {
+          background-color: var(--background);
+          color: var(--secondary);
+        }
       }
     }
-
-    div:hover h1 {
-      color: var(--secondary);
+    .image {
+      position: relative;
+      min-width: 300px;
+      width: 350px;
+      aspect-ratio: 1;
+      background-image: url("/sobre/perfil.jpg");
+      background-size: cover;
+      background-position: center;
+      border-radius: 5px;
+      box-shadow: 3px 3px 3px lightgray;
     }
   }
 }
 
-.sobre::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: rgba(241, 241, 241, 0.779);
-  z-index: 0;
-}
-
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 870px) {
   .sobre {
-    .top {
+    background-size: contain;
+    background-position: bottom;
+    background-color: #e2dedc;
+    .sobre-content {
       flex-direction: column;
+      align-items: center;
 
-      img {
-        margin: 0;
+      aside {
+        max-width: 450px;
+        margin: 2rem 0;
+      }
+      .image {
+        max-width: 320px;
       }
     }
   }
 }
 
-@media only screen and (max-width: 580px) {
+@media only screen and (max-width: 500px) {
   .sobre {
-    .bottom {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-}
+    .sobre-content {
+      aside {
+        padding: 0 0.5rem;
+        .name {
+          font-size: 2rem;
+        }
 
-@media only screen and (max-width: 400px) {
-  .sobre {
-    .bottom {
-      grid-template-columns: repeat(1, 1fr);
+        .crp {
+          font-size: 1rem;
+        }
+
+        .desc {
+          font-size: 0.9rem;
+        }
+
+        .social-media {
+          flex-wrap: wrap;
+
+          .link {
+            font-size: 1.2rem;
+          }
+
+          button {
+            margin-top: 1rem;
+            font-size: 0.7rem;
+          }
+        }
+      }
+    }
+
+    .image {
+      max-width: 300px !important;
     }
   }
 }
