@@ -70,8 +70,8 @@ function formatText(text: string, length: number) {
         </span>
         <img :src="article.image" alt="" />
         <div class="article-content">
-          <h1>{{ formatText(article.title, 25) }}</h1>
-          <p>{{ formatText(article.desc, 155) }}</p>
+          <h1>{{ formatText(article.title, 23) }}</h1>
+          <p>{{ formatText(article.desc, 150) }}</p>
           <div class="link">
             <NuxtLink :to="`/publicacoes/${article.id}`" class="text">
               Ler Mais
@@ -94,7 +94,7 @@ function formatText(text: string, length: number) {
   color: var(--secondary);
   .articles {
     max-width: 1200px;
-    margin: 4rem auto;
+    margin: 3rem auto;
     display: grid;
     grid-template-areas:
       " first second third third"
@@ -104,16 +104,16 @@ function formatText(text: string, length: number) {
 
     .article {
       position: relative;
-      background-color: var(--secondary);
-      color: var(--background);
-      box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.32);
+      background-color: var(--background);
+      color: var(--secondary);
+      box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.262);
       border-radius: 5px;
       .date {
         position: absolute;
         inset: 0;
         font-size: 0.8rem;
-        color: var(--secondary);
-        background-color: var(--background);
+        color: var(--background);
+        background-color: var(--secondary);
         height: fit-content;
         width: 40%;
         text-align: center;
@@ -144,13 +144,13 @@ function formatText(text: string, length: number) {
         .link {
           display: flex;
           align-items: center;
-          color: var(--background);
+          color: var(--secondary);
           text-transform: capitalize;
           cursor: pointer;
           width: fit-content;
 
           .text {
-            color: var(--background);
+            color: var(--secondary);
             text-decoration: none;
           }
 
@@ -161,7 +161,7 @@ function formatText(text: string, length: number) {
 
         .link:hover {
           text-decoration: underline;
-          text-decoration-color: var(--background);
+          text-decoration-color: var(--secondary);
         }
       }
     }

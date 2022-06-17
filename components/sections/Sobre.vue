@@ -18,10 +18,10 @@ import { Icon } from "@iconify/vue";
           x anos de experiência.
         </span>
         <span class="desc">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Lorem ipsum dolor sit amet consectetur adipisicing.
         </span>
         <span class="desc">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Lorem ipsum dolor sit amet consectetur adipisicing.
         </span>
         <span class="desc">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum
@@ -91,7 +91,7 @@ import { Icon } from "@iconify/vue";
       .desc {
         font-family: "WorkSansThin";
         font-size: 1.2rem;
-        margin-bottom: 1rem;
+        margin-bottom: 1.4rem;
       }
 
       .social-media {
