@@ -78,6 +78,10 @@
     section {
       width: 100%;
       padding-bottom: 0;
+      padding: 4rem 1rem 5rem;
+      p::before {
+        display: none;
+      }
     }
 
     aside {

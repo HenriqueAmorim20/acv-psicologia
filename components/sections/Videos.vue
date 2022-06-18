@@ -76,7 +76,7 @@ const videos: Array<Video> = [
   padding: 5rem 0rem;
 
   section {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 5rem auto;
     width: 100%;
     display: grid;

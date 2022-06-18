@@ -80,7 +80,7 @@ footer {
     .name {
       text-transform: capitalize;
       font-family: "WorkSansThin";
-      font-size: 2.5rem;
+      font-size: 2.3rem;
     }
 
     .description {
@@ -187,6 +187,10 @@ footer {
 
     .left {
       align-items: center;
+
+      .name {
+        font-size: 2rem;
+      }
 
       .description {
         text-align: center;
