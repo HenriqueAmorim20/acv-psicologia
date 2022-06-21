@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { Icon } from "@iconify/vue";
-import { onMounted } from "vue";
 
 interface Article {
   id: number;
@@ -12,7 +11,6 @@ interface Article {
 }
 
 const route = useRoute();
-const id = route.params.id;
 const articles: Array<Article> = [
   {
     id: 1,
@@ -95,23 +93,25 @@ const articles: Array<Article> = [
 <p>A lacus vestibulum sed arcu non odio euismod lacinia. Odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. In egestas erat imperdiet sed euismod nisi porta lorem. Nunc consequat interdum varius sit amet. Turpis egestas integer eget aliquet nibh. Euismod elementum nisi quis eleifend quam adipiscing. Bibendum est ultricies integer quis auctor. Commodo elit at imperdiet dui accumsan sit. Libero volutpat sed cras ornare. Dignissim convallis aenean et tortor. Malesuada pellentesque elit eget gravida cum sociis natoque penatibus. Magna fringilla urna porttitor rhoncus dolor. Porttitor leo a diam sollicitudin tempor id eu nisl. Sit amet purus gravida quis blandit turpis cursus. Lobortis feugiat vivamus at augue eget arcu dictum. Integer vitae justo eget magna fermentum. Ullamcorper velit sed ullamcorper morbi tincidunt ornare massa. Faucibus nisl tincidunt eget nullam non nisi est sit amet. Nullam ac tortor vitae purus faucibus ornare suspendisse sed nisi.</p>`,
   },
 ];
+const id = route.params.id;
 const article: Article = articles.filter(item => item.id.toString() === id)[0];
+const paragraph = ref(null);
 
 onMounted(() => {
   window.scrollTo(0, 0);
-  document.querySelector("#desc").innerHTML = article.desc;
+  paragraph.value.innerHTML = article.desc;
 });
 </script>
 
 <template>
-  <div class="publicacao">
+  <div class="publicacao" v-if="article">
     <section class="bg-image">
       <Title
         :title="article.title"
         color="var(--secondary)"
         :subtitle="article.category" />
     </section>
-    <div class="content">
+    <section class="content">
       <span class="date">{{
         article.date.toLocaleDateString("pt-BR", {
           weekday: "long",
@@ -120,8 +120,8 @@ onMounted(() => {
           day: "numeric",
         })
       }}</span>
-      <p class="desc" id="desc"></p>
-    </div>
+      <p class="desc" ref="paragraph"></p>
+    </section>
   </div>
 </template>
 
@@ -171,6 +171,20 @@ onMounted(() => {
       line-height: 2rem;
       font-size: 1.3rem;
       font-family: "WorkSansThin";
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .publicacao {
+    .content {
+      .date {
+        font-size: 1.1rem;
+      }
+
+      .desc {
+        font-size: 1.2rem;
+      }
     }
   }
 }

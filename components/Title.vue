@@ -35,11 +35,13 @@ header {
   justify-content: center;
   --dynamic-color: #fff;
   color: var(--dynamic-color);
+  margin: 0 0.5rem;
   h1 {
     display: flex;
     flex-direction: column;
     width: fit-content;
     font-family: "WorkSansRegular";
+    text-align: center;
     font-weight: 200;
     font-size: 2rem;
   }
