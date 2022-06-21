@@ -4,6 +4,7 @@ const route = useRoute();
 onMounted(onInit);
 
 function onInit() {
+  window.scrollTo(0, 0);
   console.log(route.params.id);
 }
 </script>
