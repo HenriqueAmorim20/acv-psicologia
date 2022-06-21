@@ -6,6 +6,7 @@ interface Article {
   image: string;
   title: string;
   desc: string;
+  category: string;
 }
 
 const articles: Array<Article> = [
@@ -15,6 +16,7 @@ const articles: Array<Article> = [
     image: "/consultorio/1.jpeg",
     title: "O impacto da ansiedade",
     desc: "Lorem ipsum dolor sit amet bla bla bla bla, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e.",
+    category: "Ansiedade",
   },
   {
     id: 2,
@@ -22,6 +24,7 @@ const articles: Array<Article> = [
     image: "/consultorio/2.jpeg",
     title: "Lorem ipsum dolor sit amet bla bla bla bla",
     desc: "Lorem ipsum dolor sit amet bla bla bla bla, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e.",
+    category: "Relacionamento",
   },
   {
     id: 3,
@@ -29,6 +32,7 @@ const articles: Array<Article> = [
     image: "/consultorio/3.jpeg",
     title: "Síndrome de Burnout",
     desc: "Lorem ipsum dolor sit amet bla bla bla bla, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e.",
+    category: "Trabalho",
   },
   {
     id: 4,
@@ -36,6 +40,7 @@ const articles: Array<Article> = [
     image: "/consultorio/4.jpeg",
     title: "Lorem ipsum dolor sit amet bla bla bla bla",
     desc: "Lorem ipsum dolor sit amet bla bla bla bla, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e.",
+    category: "Relacionamento",
   },
   {
     id: 5,
@@ -43,7 +48,16 @@ const articles: Array<Article> = [
     image: "/consultorio/5.jpeg",
     title: "Lorem ipsum dolor sit amet bla bla bla bla",
     desc: "Lorem ipsum dolor sit amet bla bla bla bla, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e.",
+    category: "familia",
   },
+];
+
+const categories: Array<String> = [
+  "relacionamentos",
+  "trabalho",
+  "familia",
+  "amizades",
+  "saúde mental",
 ];
 
 function formatText(text: string, length: number) {
