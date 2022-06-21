@@ -256,6 +256,25 @@ function navigateTo(item: MenuItem): void {
     .navbar-logo {
       width: 90px;
     }
+
+    .menu-icon {
+      cursor: pointer;
+      .menu-icon-bar {
+        width: 35px;
+        margin: 7px 0px;
+      }
+
+      .first-bar-active {
+        transform: translateY(0.55rem) rotate(-45deg);
+      }
+      .second-bar-active {
+        transform: rotate(45deg);
+      }
+      .third-bar-active {
+        transform: rotate(45deg);
+        opacity: 0;
+      }
+    }
   }
 
   .drawer {
