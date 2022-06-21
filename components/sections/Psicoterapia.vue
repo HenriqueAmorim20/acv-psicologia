@@ -40,7 +40,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 4rem 2rem 5rem;
+    padding: 3rem 2rem 5rem;
 
     p {
       display: flex;

@@ -30,7 +30,7 @@ let qtd: any = ref(4);
   align-items: center;
   justify-content: center;
   color: var(--secondary);
-  padding: 5rem 2rem;
+  padding: 3rem 2rem;
   .photos {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
