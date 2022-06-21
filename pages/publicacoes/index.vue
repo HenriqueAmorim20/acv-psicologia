@@ -140,7 +140,7 @@ function filterCategories() {
                 })
               }}
             </span>
-            <h1>{{ formatText(article.title, 25) }}</h1>
+            <h1>{{ formatText(article.title, 23) }}</h1>
             <p>{{ formatText(article.desc, 150) }}</p>
             <div class="link">
               <NuxtLink :to="`/publicacoes/${article.id}`" class="text">
@@ -187,6 +187,8 @@ function filterCategories() {
     margin: 0 auto;
 
     .filters {
+      display: flex;
+      flex-direction: column;
       width: 30%;
       padding: 2rem 1rem;
 
@@ -280,8 +282,13 @@ function filterCategories() {
           flex-direction: column;
           padding: 0.5rem 1rem;
 
+          .date {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+          }
+
           h1 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: var(--secondary);
           }
 
@@ -314,6 +321,87 @@ function filterCategories() {
             text-decoration-color: var(--secondary);
           }
         }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .publicacoes {
+    .content {
+      flex-direction: column;
+      .filters,
+      .articles {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .publicacoes {
+    .bg-image {
+      height: 200px;
+    }
+    .content {
+      flex-direction: column;
+      .filters,
+      .articles {
+        max-width: 600px;
+        padding: 1rem;
+        gap: 1rem;
+      }
+
+      .filters {
+        .categories {
+          margin-top: 1rem;
+        }
+      }
+
+      .articles {
+        .article {
+          .article-content {
+            h1 {
+              font-size: 1.2rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .publicacoes {
+    .content {
+      .articles {
+        .article {
+          .article-content {
+            .date {
+              font-size: 0.8rem;
+            }
+            h1 {
+              font-size: 1.1rem;
+            }
+
+            p {
+              font-size: 0.9rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .publicacoes {
+    .content {
+      .articles {
+        grid-template-columns: 1fr;
+        max-width: 400px;
       }
     }
   }
