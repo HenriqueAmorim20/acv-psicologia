@@ -6,7 +6,16 @@ onMounted(() => {
 });
 
 let searchFilter = ref("");
-let categoryFilter = ref([]);
+let categoryFilter = ref("");
+
+const filter = computed(() => {
+  return {
+    search: searchFilter.value,
+    category: categoryFilter.value,
+  };
+});
+
+watchEffect(() => filterArticles());
 
 interface Article {
   id: number;
@@ -17,7 +26,7 @@ interface Article {
   category: string;
 }
 
-const articles: Array<Article> = [
+const articles = ref([
   {
     id: 1,
     date: new Date(2020, 6, 1),
@@ -66,7 +75,7 @@ const articles: Array<Article> = [
     desc: "Lorem ipsum dolor sit amet bla bla bla bla, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e.",
     category: "amizades",
   },
-];
+]);
 
 const categories: Array<String> = [
   "relacionamentos",
@@ -81,19 +90,13 @@ function formatText(text: string, length: number) {
 }
 
 function setCategory(category: String) {
-  if (categoryFilter.value.includes(category)) {
-    categoryFilter.value.splice(categoryFilter.value.indexOf(category), 1);
-  } else {
-    categoryFilter.value.push(category);
-  }
-
-  filterCategories();
+  categoryFilter.value =
+    categoryFilter.value === category ? "" : category.toString();
 }
 
-function filterCategories() {
-  console.log(
-    `busca: ${searchFilter.value} categoria: ${categoryFilter.value}`
-  );
+// TODO: get request based on filters
+function filterArticles() {
+  console.log(filter.value);
 }
 </script>
 
@@ -120,9 +123,10 @@ function filterCategories() {
             class="category"
             v-for="(category, index) in categories"
             :key="index"
-            @click="setCategory(category)"
-            :class="categoryFilter.includes(category) ? 'active-category' : ''">
-            {{ category }}
+            :class="categoryFilter === category ? 'active-category' : ''">
+            <span @click="setCategory(category)">
+              {{ category }}
+            </span>
           </div>
         </div>
       </div>
