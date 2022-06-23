@@ -70,7 +70,6 @@ footer {
   grid-template-columns: 3fr 1fr 3fr;
   padding: 3rem 4rem;
   margin: 0 auto;
-  border-top: 1px solid lightgray;
   background-color: var(--secondary);
   color: var(--background);
 

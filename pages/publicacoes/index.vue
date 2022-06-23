@@ -157,6 +157,7 @@ function filterCategories() {
 
 <style lang="scss" scoped>
 .publicacoes {
+  background-color: var(--secondary);
   .bg-image {
     display: flex;
     align-items: center;
@@ -198,6 +199,7 @@ function filterCategories() {
           width: 100%;
           padding: 0.5rem 1rem;
           border-radius: 100px;
+          font-size: 1rem;
           box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.128);
 
           &:focus {
@@ -234,7 +236,7 @@ function filterCategories() {
 
         .category {
           cursor: pointer;
-          font-size: 1.1rem;
+          font-size: 1rem;
           transition: 0.4s ease;
           &::after {
             content: "";
@@ -268,13 +270,14 @@ function filterCategories() {
         display: flex;
         flex-direction: column;
         background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.056);
+        border-radius: 5px;
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.369);
 
         img {
           max-width: 100%;
           aspect-ratio: 4/3;
           object-fit: cover;
+          border-radius: 5px 5px 0 0;
         }
 
         .article-content {

@@ -74,7 +74,7 @@ import { Icon } from "@iconify/vue";
 
     aside {
       margin: 0 3rem;
-      max-width: 450px;
+      max-width: 500px;
       display: flex;
       flex-direction: column;
 
@@ -92,7 +92,8 @@ import { Icon } from "@iconify/vue";
 
       .desc {
         font-family: "WorkSansThin";
-        font-size: 1.2rem;
+        font-size: 1.3rem;
+        font-weight: 400;
         margin-bottom: 1.4rem;
       }
 
@@ -183,10 +184,14 @@ import { Icon } from "@iconify/vue";
 
         .crp {
           font-size: 1rem;
+          font-family: "WorkSansRegular";
+          font-weight: normal;
         }
 
         .desc {
-          font-size: 0.9rem;
+          font-size: 1rem;
+          font-family: "WorkSansLight";
+          color: var(--secondary);
         }
 
         .social-media {

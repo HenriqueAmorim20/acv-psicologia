@@ -105,7 +105,9 @@ onMounted(() => {
 
 <template>
   <div class="publicacao" v-if="article">
-    <section class="bg-image">
+    <section
+      class="bg-image"
+      :style="`background-image: url(${article.image})`">
       <Title
         :title="article.title"
         color="var(--secondary)"
@@ -127,12 +129,13 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .publicacao {
+  background-color: var(--secondary);
   .bg-image {
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    background-image: url("/publicacoes/bg.jpg");
+    // background-image: url("/publicacoes/bg.jpg");
     background-size: cover;
     background-position: center;
     width: 100%;
