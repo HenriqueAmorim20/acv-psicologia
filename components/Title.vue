@@ -20,7 +20,7 @@ const props = defineProps({
 <template>
   <header :style="`--dynamic-color: ${props.color}`">
     <div class="icon">
-      <Icon icon="noto-v1:pineapple" />
+      <Icon icon="icon-park-outline:pineapple" />
     </div>
     <h1>{{ props.title }}</h1>
     <h2>{{ props.subtitle }}</h2>
@@ -61,6 +61,7 @@ header {
     justify-content: center;
     align-items: center;
     font-size: 2rem;
+    color: var(--dynamic-color);
   }
 
   .icon::after,

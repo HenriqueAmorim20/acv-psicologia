@@ -20,8 +20,14 @@ export default defineNuxtConfig({
   css: ["~/assets/css/global.css"],
   publicRuntimeConfig: {
     FIREBASE_API_KEY: process.env.FIREBASE_API_KEY,
+    PROJECT_ID: process.env.PROJECT_ID,
+    PRIVATE_KEY: process.env.PRIVATE_KEY,
+    CLIENT_EMAIL: process.env.CLIENT_EMAIL,
   },
   privateRuntimeConfig: {
     FIREBASE_API_KEY: process.env.FIREBASE_API_KEY,
+    PROJECT_ID: process.env.PROJECT_ID,
+    PRIVATE_KEY: process.env.PRIVATE_KEY,
+    CLIENT_EMAIL: process.env.CLIENT_EMAIL,
   },
 });

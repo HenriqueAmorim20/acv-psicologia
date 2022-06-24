@@ -2,12 +2,17 @@ import { getFirestore } from "firebase-admin/firestore";
 import { initializeApp, getApps, cert } from "firebase-admin/app";
 
 const apps = getApps();
+const config = useRuntimeConfig();
+
+const credentials = {
+  projectId: config.PROJECT_ID,
+  privateKey: config.PRIVATE_KEY.replace(/\\n/g, "\n"),
+  clientEmail: config.CLIENT_EMAIL,
+};
 
 if (!apps.length) {
   initializeApp({
-    credential: cert(
-      "./acv-psicologia-firebase-adminsdk-wa6fl-4243822da5.json"
-    ),
+    credential: cert(credentials),
   });
 }
 
