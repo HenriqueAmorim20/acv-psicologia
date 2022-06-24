@@ -1,9 +1,5 @@
-<script setup lang="ts">
-const videos: Array<string> = [
-  "https://www.youtube.com/embed/Hkb379_CnRk",
-  "https://www.youtube.com/embed/BRGt6H6fyIQ",
-  "https://www.youtube.com/embed/pcdHjq1UOr8",
-];
+<script setup>
+const { data } = await useFetch("/api/videos");
 </script>
 <template>
   <div class="videos" id="videosSection">
@@ -11,11 +7,11 @@ const videos: Array<string> = [
       title="meus vídeos"
       subtitle="confira meus principais vídeos do youtube" />
     <section>
-      <div class="video" v-for="(item, index) in videos" :key="index">
+      <div class="video" v-for="(item, index) in data" :key="index">
         <iframe
           width="100%"
           style="aspect-ratio: 560/315"
-          :src="item"
+          :src="item.url"
           title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
