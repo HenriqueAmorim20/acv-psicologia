@@ -1,5 +1,15 @@
 <script setup>
-const { data } = await useFetch("/api/videos");
+const admin = useFirebaseUser();
+
+const isOpen = ref(false);
+const selectedVideo = ref({});
+
+const { data } = await useFetch("/api/videos").catch(err => console.log(err));
+
+const openModal = video => {
+  selectedVideo.value = video;
+  isOpen.value = true;
+};
 </script>
 <template>
   <div class="videos" id="videosSection">
@@ -7,15 +17,16 @@ const { data } = await useFetch("/api/videos");
       title="meus vídeos"
       subtitle="confira meus principais vídeos do youtube" />
     <section>
-      <div class="video" v-for="(item, index) in data" :key="index">
+      <div class="video" v-for="(video, index) in data" :key="index">
         <iframe
           width="100%"
           style="aspect-ratio: 560/315"
-          :src="item.url"
+          :src="video.url"
           title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen></iframe>
+        <button v-if="admin" @click="openModal(video)">editar video</button>
       </div>
     </section>
     <a
@@ -25,6 +36,7 @@ const { data } = await useFetch("/api/videos");
       class="btn">
       ver todos
     </a>
+    <Modal v-show="isOpen" :video="selectedVideo" @close="isOpen = false" />
   </div>
 </template>
 
@@ -61,6 +73,18 @@ const { data } = await useFetch("/api/videos");
         &::before {
           display: none;
         }
+      }
+
+      button {
+        position: absolute;
+        inset: auto 0 0 auto;
+        background-color: var(--primary);
+        color: var(--background);
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 0.3rem;
+        cursor: pointer;
+        font-weight: bold;
       }
     }
   }
