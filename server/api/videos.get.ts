@@ -1,20 +1,10 @@
 import { getFirestore } from "firebase-admin/firestore";
-import { initializeApp, getApps, cert } from "firebase-admin/app";
+import { getApps } from "firebase-admin/app";
+import { initFirestore } from "~~/server/initFirestore";
 
 const apps = getApps();
-const config = useRuntimeConfig();
 
-const credentials = {
-  projectId: config.PROJECT_ID,
-  privateKey: config.PRIVATE_KEY.replace(/\\n/g, "\n"),
-  clientEmail: config.CLIENT_EMAIL,
-};
-
-if (!apps.length) {
-  initializeApp({
-    credential: cert(credentials),
-  });
-}
+if (!apps.length) initFirestore();
 
 export default async (request, response) => {
   const db = getFirestore();
