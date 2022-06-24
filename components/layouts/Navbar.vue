@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import { useRouter } from "vue-router";
 import { onMounted, onUnmounted } from "vue";
 interface MenuItem {
   name: string;
   path: string;
   id?: string;
 }
-const router = useRouter();
 let scrollPosition: number = 0;
 let drawer: Boolean = false;
 const menuItems: Array<MenuItem> = [
@@ -42,7 +40,7 @@ onMounted(onInit);
 onUnmounted(onDestroy);
 
 function onInit() {
-  scrollPosition = window.scrollY;
+  handleNavbar();
   window.addEventListener("scroll", handleNavbar);
 }
 
@@ -78,7 +76,6 @@ function handleNavbar() {
  */
 function toggleDrawer(): void {
   const bodyEl = document.querySelector("body");
-  const navbarEl = document.querySelector(".navbar-normal") as HTMLElement;
   const menuIconBars: any = document.querySelectorAll(".menu-icon-bar");
   const drawerElement: any = document.querySelector(".drawer");
   const logoElement: any = document.querySelector(".navbar-logo");
@@ -97,9 +94,7 @@ function toggleDrawer(): void {
 /**
  * Handles page navigation navigation and scrolling to element
  */
-function navigateTo(item: MenuItem): void {
-  router.push({ path: item.path });
-
+function scrollTo(item: MenuItem): void {
   if (item.id) {
     setTimeout(() => {
       const element = document.getElementById(item.id);
@@ -113,12 +108,14 @@ function navigateTo(item: MenuItem): void {
 <template>
   <div class="navbarComponent">
     <nav class="navbar navbar-normal">
-      <img
-        @click="navigateTo({ name: null, path: '/', id: 'homeSection' })"
-        class="navbar-logo"
-        id="navbar-logo"
-        src="/logos/logo.png"
-        alt="Ana Carolina Villaça" />
+      <NuxtLink to="/">
+        <img
+          @click="scrollTo({ name: null, path: '/', id: 'homeSection' })"
+          class="navbar-logo"
+          id="navbar-logo"
+          src="/logos/logo.png"
+          alt="Ana Carolina Villaça" />
+      </NuxtLink>
       <div class="menu-icon" @click="toggleDrawer()">
         <span class="menu-icon-bar"></span>
         <span class="menu-icon-bar"></span>
@@ -127,24 +124,27 @@ function navigateTo(item: MenuItem): void {
     </nav>
 
     <div class="drawer">
-      <span
+      <NuxtLink
         v-for="(item, index) in menuItems"
         :key="index"
-        @click="[toggleDrawer(), navigateTo(item)]"
+        :to="item.path"
+        @click="[toggleDrawer(), scrollTo(item)]"
         class="menu-item">
         {{ item.name }}
-      </span>
-      <img
-        @click="
-          [
-            toggleDrawer(),
-            navigateTo({ name: null, path: '/', id: 'homeSection' }),
-          ]
-        "
-        class="drawer-logo"
-        id="drawer-logo"
-        src="/logos/logo.png"
-        alt="Ana Carolina Villaça" />
+      </NuxtLink>
+      <NuxtLink to="/">
+        <img
+          @click="
+            [
+              toggleDrawer(),
+              scrollTo({ name: null, path: '/', id: 'homeSection' }),
+            ]
+          "
+          class="drawer-logo"
+          id="drawer-logo"
+          src="/logos/logo.png"
+          alt="Ana Carolina Villaça" />
+      </NuxtLink>
     </div>
   </div>
 </template>
@@ -221,6 +221,8 @@ function navigateTo(item: MenuItem): void {
     font-size: 3rem;
     margin: 0.3rem 0;
     cursor: pointer;
+    text-decoration: none;
+    color: var(--primary);
   }
   .menu-item::after {
     display: block;
