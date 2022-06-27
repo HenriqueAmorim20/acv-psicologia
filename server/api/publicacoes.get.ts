@@ -6,11 +6,14 @@ const apps = getApps();
 
 if (!apps.length) initFirestore();
 
-export default async request => {
+export default async () => {
   const db = getFirestore();
-  const body = await useBody(request);
-  const video = await db.collection("videos").doc(body.id).set({
-    url: body.url,
+  const publicacoes = await db.collection("publicacoes").get();
+  const publicacoesData = publicacoes.docs.map(doc => {
+    return {
+      uuid: doc.id,
+      ...doc.data(),
+    };
   });
-  return video;
+  return publicacoesData;
 };

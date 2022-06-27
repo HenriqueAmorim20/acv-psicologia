@@ -6,7 +6,7 @@ const apps = getApps();
 
 if (!apps.length) initFirestore();
 
-export default async (request, response) => {
+export default async () => {
   const db = getFirestore();
   const videos = await db.collection("videos").get();
   const videosData = videos.docs.map(doc => {
