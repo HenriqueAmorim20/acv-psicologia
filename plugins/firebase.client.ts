@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+import { getStorage, ref } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
 
 export default defineNuxtPlugin(nuxtApp => {
@@ -6,8 +7,11 @@ export default defineNuxtPlugin(nuxtApp => {
   const firebaseConfig = {
     apiKey: config.FIREBASE_API_KEY,
     projectId: config.PROJECT_ID,
+    storageBucket: config.STORAGE_BUCKET,
   };
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+  const firebaseApp = initializeApp(firebaseConfig);
+  const db = getFirestore(firebaseApp);
+  const storage = getStorage(firebaseApp);
+
   initUser();
 });

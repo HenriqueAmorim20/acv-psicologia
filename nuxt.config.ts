@@ -23,11 +23,13 @@ export default defineNuxtConfig({
     PROJECT_ID: process.env.PROJECT_ID,
     PRIVATE_KEY: process.env.PRIVATE_KEY,
     CLIENT_EMAIL: process.env.CLIENT_EMAIL,
+    STORAGE_BUCKET: process.env.STORAGE_BUCKET,
   },
   privateRuntimeConfig: {
     FIREBASE_API_KEY: process.env.FIREBASE_API_KEY,
     PROJECT_ID: process.env.PROJECT_ID,
     PRIVATE_KEY: process.env.PRIVATE_KEY,
     CLIENT_EMAIL: process.env.CLIENT_EMAIL,
+    STORAGE_BUCKET: process.env.STORAGE_BUCKET,
   },
 });
