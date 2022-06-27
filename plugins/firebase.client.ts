@@ -5,7 +5,7 @@ export default defineNuxtPlugin(nuxtApp => {
   const config = useRuntimeConfig();
   const firebaseConfig = {
     apiKey: config.FIREBASE_API_KEY,
-    projectId: "acv-psicologia",
+    projectId: config.PROJECT_ID,
   };
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
