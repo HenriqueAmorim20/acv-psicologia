@@ -32,7 +32,7 @@ const menuItems: Array<MenuItem> = [
   {
     name: "publicações",
     id: "publicacoesSection",
-    path: "/",
+    path: "/publicacoes",
   },
 ];
 

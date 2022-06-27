@@ -1,4 +1,5 @@
 <script setup>
+import { Icon } from "@iconify/vue";
 const admin = useFirebaseUser();
 
 const isOpen = ref(false);
@@ -26,7 +27,9 @@ const openModal = video => {
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen></iframe>
-        <button v-if="admin" @click="openModal(video)">editar video</button>
+        <button v-if="admin" @click="openModal(video)" class="edit-video">
+          <Icon class="edit-icon" icon="ci:edit" />
+        </button>
       </div>
     </section>
     <a
@@ -75,16 +78,20 @@ const openModal = video => {
         }
       }
 
-      button {
+      .edit-video {
+        z-index: 2;
         position: absolute;
-        inset: auto 0 0 auto;
-        background-color: var(--primary);
-        color: var(--background);
-        padding: 0.5rem 1rem;
-        border: none;
-        border-radius: 0.3rem;
+        color: #fff;
+        font-size: 1.2rem;
+        padding: 0.3rem;
         cursor: pointer;
-        font-weight: bold;
+      }
+
+      .edit-video {
+        inset: 0 0 auto auto;
+        background-color: var(--secondary);
+        border-radius: 5px 0 5px 0;
+        box-shadow: 2px 2px 7px black;
       }
     }
   }

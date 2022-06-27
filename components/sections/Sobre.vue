@@ -31,10 +31,10 @@ import { Icon } from "@iconify/vue";
         <div class="social-media">
           <a
             class="link"
-            href="https://wa.me/5561981170400"
+            href="mailto:hacmelo@gmail.com"
             target="_blank"
             rel="noopener noreferrer">
-            <Icon class="link-icon" icon="akar-icons:whatsapp-fill" />
+            <Icon class="link-icon" icon="carbon:email" />
           </a>
           <a
             class="link"
@@ -50,7 +50,9 @@ import { Icon } from "@iconify/vue";
             <Icon class="link-icon" icon="ant-design:youtube-outlined" />
           </a>
           <span style="flex: 1 1 auto"></span>
-          <button class="btn">baixar currículo</button>
+          <a href="https://wa.me/5561981170400" target="_blank">
+            <button class="btn">agendar sessão</button>
+          </a>
         </div>
       </aside>
     </div>
