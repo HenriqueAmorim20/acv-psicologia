@@ -1,103 +1,41 @@
 <script setup lang="ts">
 import { Icon } from "@iconify/vue";
-import { onMounted } from "vue";
-onMounted(() => {
-  window.scrollTo(0, 0);
-});
 
 let searchFilter = ref("");
 let categoryFilter = ref("");
 
-const filter = computed(() => {
-  return {
-    search: searchFilter.value,
-    category: categoryFilter.value,
-  };
-});
+const articles = useArticles();
+
+const articlesData = ref(articles.value);
+
+const categories = [
+  ...new Set(articles.value.map((a: any) => a.category)),
+].sort();
+
+const setCategory = (category: any): void => {
+  categoryFilter.value =
+    categoryFilter.value === category ? "" : category.toString();
+};
+
+const filterArticles = (): void => {
+  articlesData.value = articles.value;
+  if (searchFilter.value.length > 0) {
+    articlesData.value = articlesData.value.filter((a: any) =>
+      a.title.toLowerCase().includes(searchFilter.value.toLowerCase())
+    );
+  }
+  if (categoryFilter.value) {
+    articlesData.value = articlesData.value.filter(
+      (a: any) => a.category === categoryFilter.value
+    );
+  }
+};
 
 watchEffect(() => filterArticles());
 
-interface Article {
-  id: number;
-  date: Date;
-  image: string;
-  title: string;
-  desc: string;
-  category: string;
-}
-
-const articles = ref([
-  {
-    id: 1,
-    date: new Date(2020, 6, 1),
-    image: "/consultorio/1.jpeg",
-    title: "O impacto da ansiedade",
-    desc: "Lorem ipsum dolor sit amet bla bla bla bla, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e.",
-    category: "Ansiedade",
-  },
-  {
-    id: 2,
-    date: new Date(2020, 6, 2),
-    image: "/consultorio/2.jpeg",
-    title: "Lorem ipsum dolor sit amet bla bla bla bla",
-    desc: "Lorem ipsum dolor sit amet bla bla bla bla, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e.",
-    category: "Relacionamento",
-  },
-  {
-    id: 3,
-    date: new Date(2020, 6, 3),
-    image: "/consultorio/3.jpeg",
-    title: "Síndrome de Burnout",
-    desc: "Lorem ipsum dolor sit amet bla bla bla bla, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e.",
-    category: "Trabalho",
-  },
-  {
-    id: 4,
-    date: new Date(2020, 6, 4),
-    image: "/consultorio/4.jpeg",
-    title: "Lorem ipsum dolor sit amet bla bla bla bla",
-    desc: "Lorem ipsum dolor sit amet bla bla bla bla, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e.",
-    category: "Relacionamento",
-  },
-  {
-    id: 5,
-    date: new Date(2020, 6, 5),
-    image: "/consultorio/5.jpeg",
-    title: "Lorem ipsum dolor sit amet bla bla bla bla",
-    desc: "Lorem ipsum dolor sit amet bla bla bla bla, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e.",
-    category: "familia",
-  },
-  {
-    id: 6,
-    date: new Date(2020, 6, 6),
-    image: "/consultorio/5.jpeg",
-    title: "Lorem ipsum dolor sit amet bla bla bla bla",
-    desc: "Lorem ipsum dolor sit amet bla bla bla bla, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e.",
-    category: "amizades",
-  },
-]);
-
-const categories: Array<String> = [
-  "relacionamentos",
-  "trabalho",
-  "familia",
-  "amizades",
-  "saúde mental",
-];
-
-function formatText(text: string, length: number) {
-  return text.length > length ? text.substring(0, length) + "..." : text;
-}
-
-function setCategory(category: String) {
-  categoryFilter.value =
-    categoryFilter.value === category ? "" : category.toString();
-}
-
-// TODO: get request based on filters
-function filterArticles() {
-  console.log(filter.value);
-}
+const callFormatDate = (articleDate: number): string => formatDate(articleDate);
+const callFormatText = (text: string, length: number): string =>
+  formatText(text, length);
 </script>
 
 <template>
@@ -122,32 +60,32 @@ function filterArticles() {
           <div
             class="category"
             v-for="(category, index) in categories"
-            :key="index"
-            :class="categoryFilter === category ? 'active-category' : ''">
-            <span @click="setCategory(category)">
+            :key="index">
+            <span
+              :class="categoryFilter === category ? 'active-category' : ''"
+              @click="setCategory(category)">
               {{ category }}
             </span>
           </div>
         </div>
       </div>
       <div class="articles">
-        <div class="article" v-for="(article, index) in articles" :key="index">
+        <h3 v-if="!articlesData.length" class="no-result">
+          Nenhum resultado encontrado!
+        </h3>
+        <div
+          class="article"
+          v-for="(article, index) in articlesData"
+          :key="index">
           <img :src="article.image" alt="" />
           <div class="article-content">
             <span class="date">
-              {{
-                article.date.toLocaleDateString("pt-BR", {
-                  weekday: "long",
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })
-              }}
+              {{ callFormatDate(article.date["_seconds"]) }}
             </span>
-            <h1>{{ formatText(article.title, 23) }}</h1>
-            <p>{{ formatText(article.desc, 150) }}</p>
+            <h1>{{ callFormatText(article.title, 23) }}</h1>
+            <p>{{ callFormatText(article.desc, 150) }}</p>
             <div class="link">
-              <NuxtLink :to="`/publicacoes/${article.id}`" class="text">
+              <NuxtLink :to="`/publicacoes/${article.uuid}`" class="text">
                 Ler Mais
               </NuxtLink>
               <Icon class="icon" icon="akar-icons:chevron-right" />
@@ -215,7 +153,7 @@ function filterArticles() {
           cursor: pointer;
           position: absolute;
           inset: auto 0.5rem auto auto;
-          transform: translateY(30%);
+          transform: translateY(40%);
           font-size: 1.2rem;
           background-color: #fff;
         }
@@ -241,6 +179,7 @@ function filterArticles() {
         .category {
           cursor: pointer;
           font-size: 1rem;
+          text-transform: capitalize;
           transition: 0.4s ease;
           &::after {
             content: "";
@@ -258,8 +197,20 @@ function filterArticles() {
         }
 
         .active-category {
+          display: flex;
+          align-items: center;
           color: var(--secondary);
           font-family: "WorkSansRegular";
+        }
+
+        .active-category::before {
+          content: "";
+          display: block;
+          border-radius: 50%;
+          background-color: var(--secondary);
+          width: 10px;
+          height: 10px;
+          margin-right: 0.5rem;
         }
       }
     }
@@ -269,6 +220,10 @@ function filterArticles() {
       grid-template-columns: 1fr 1fr;
       padding: 2rem;
       gap: 2rem;
+
+      .no-result {
+        color: var(--background);
+      }
 
       .article {
         display: flex;

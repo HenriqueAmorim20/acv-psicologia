@@ -1,68 +1,11 @@
 <script setup lang="ts">
 import { Icon } from "@iconify/vue";
-interface Article {
-  id: number;
-  date: Date;
-  image: string;
-  title: string;
-  desc: string;
-  category: string;
-}
 
-const articles: Array<Article> = [
-  {
-    id: 1,
-    date: new Date(2020, 6, 1),
-    image: "/consultorio/1.jpeg",
-    title: "O impacto da ansiedade",
-    desc: "Lorem ipsum dolor sit amet bla bla bla bla, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e.",
-    category: "Ansiedade",
-  },
-  {
-    id: 2,
-    date: new Date(2020, 6, 2),
-    image: "/consultorio/2.jpeg",
-    title: "Lorem ipsum dolor sit amet bla bla bla bla",
-    desc: "Lorem ipsum dolor sit amet bla bla bla bla, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e.",
-    category: "Relacionamento",
-  },
-  {
-    id: 3,
-    date: new Date(2020, 6, 3),
-    image: "/consultorio/3.jpeg",
-    title: "Síndrome de Burnout",
-    desc: "Lorem ipsum dolor sit amet bla bla bla bla, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e.",
-    category: "Trabalho",
-  },
-  {
-    id: 4,
-    date: new Date(2020, 6, 4),
-    image: "/consultorio/4.jpeg",
-    title: "Lorem ipsum dolor sit amet bla bla bla bla",
-    desc: "Lorem ipsum dolor sit amet bla bla bla bla, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e.",
-    category: "Relacionamento",
-  },
-  {
-    id: 5,
-    date: new Date(2020, 6, 5),
-    image: "/consultorio/5.jpeg",
-    title: "Lorem ipsum dolor sit amet bla bla bla bla",
-    desc: "Lorem ipsum dolor sit amet bla bla bla bla, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nisi, euismod aliquam nisl nunc eget lorem. Donec euismod, nisi vel consectetur interdum, nisl nunc e.",
-    category: "familia",
-  },
-];
+const articles = useArticles();
 
-const categories: Array<String> = [
-  "relacionamentos",
-  "trabalho",
-  "familia",
-  "amizades",
-  "saúde mental",
-];
-
-function formatText(text: string, length: number) {
-  return text.length > length ? text.substring(0, length) + "..." : text;
-}
+const callFormatDate = (articleDate: number): string => formatDate(articleDate);
+const callFormatText = (text: string, length: number): string =>
+  formatText(text, length);
 </script>
 
 <template>
@@ -72,22 +15,19 @@ function formatText(text: string, length: number) {
       subtitle="assuntos relevantes na psicoterapia"
       color="var(--secondary)" />
     <div class="articles">
-      <div class="article" v-for="(article, index) in articles" :key="index">
+      <div
+        class="article"
+        v-for="(article, index) in articles.slice(0, 5)"
+        :key="index">
         <span class="date">
-          {{
-            article.date.toLocaleDateString("pt-BR", {
-              year: "numeric",
-              month: "short",
-              day: "numeric",
-            })
-          }}
+          {{ callFormatDate(article.date["_seconds"]) }}
         </span>
         <img :src="article.image" alt="" />
         <div class="article-content">
-          <h1>{{ formatText(article.title, 23) }}</h1>
-          <p>{{ formatText(article.desc, 150) }}</p>
+          <h1>{{ callFormatText(article.title, 23) }}</h1>
+          <p>{{ callFormatText(article.desc, 180) }}</p>
           <div class="link">
-            <NuxtLink :to="`/publicacoes/${article.id}`" class="text">
+            <NuxtLink :to="`/publicacoes/${article.uuid}`" class="text">
               Ler Mais
             </NuxtLink>
             <Icon class="icon" icon="akar-icons:chevron-right" />
@@ -129,7 +69,7 @@ function formatText(text: string, length: number) {
         color: var(--background);
         background-color: var(--secondary);
         height: fit-content;
-        width: 40%;
+        width: 50%;
         text-align: center;
         padding: 0.3rem 0.7rem;
         border-radius: 5px 0 0 0;
