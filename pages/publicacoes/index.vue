@@ -4,6 +4,11 @@ import { Icon } from "@iconify/vue";
 let searchFilter = ref("");
 let categoryFilter = ref("");
 
+const user = useFirebaseUser();
+
+const isOpen = ref(false);
+const selectedArticle = ref({});
+
 const articles = useArticles();
 
 const articlesData = ref(articles.value);
@@ -36,6 +41,11 @@ watchEffect(() => filterArticles());
 const callFormatDate = (articleDate: number): string => formatDate(articleDate);
 const callFormatText = (text: string, length: number): string =>
   formatText(text, length);
+
+const openModal = article => {
+  selectedArticle.value = article;
+  isOpen.value = true;
+};
 </script>
 
 <template>
@@ -45,6 +55,7 @@ const callFormatText = (text: string, length: number): string =>
         title="publicações"
         subtitle="assuntos relevantes na psicoterapia"
         color="var(--secondary)" />
+      <button v-if="user" class="btn">adicionar publicação</button>
     </section>
     <section class="content">
       <div class="filters">
@@ -79,6 +90,12 @@ const callFormatText = (text: string, length: number): string =>
           :key="index">
           <img :src="article.image" alt="" />
           <div class="article-content">
+            <button class="edit-article">
+              <Icon class="edit-icon" icon="ci:edit" />
+            </button>
+            <button @click="openModal(article)" class="delete-article">
+              <Icon class="delete-icon" icon="carbon:delete" />
+            </button>
             <span class="date">
               {{ callFormatDate(article.date["_seconds"]) }}
             </span>
@@ -94,6 +111,10 @@ const callFormatText = (text: string, length: number): string =>
         </div>
       </div>
     </section>
+    <ModalDelete
+      v-show="isOpen"
+      :article="selectedArticle"
+      @close="isOpen = false" />
   </div>
 </template>
 
@@ -102,6 +123,7 @@ const callFormatText = (text: string, length: number): string =>
   background-color: var(--secondary);
   .bg-image {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     position: relative;
@@ -121,6 +143,24 @@ const callFormatText = (text: string, length: number): string =>
       position: absolute;
       inset: 0;
       background-color: rgba(255, 255, 255, 0.652);
+    }
+    .btn {
+      margin: 1rem;
+      cursor: pointer;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-size: 0.9rem;
+      letter-spacing: 3px;
+      padding: 0.5rem 2rem;
+      transition: 0.3s ease;
+      font-family: "WorkSansLight";
+      border: 1px solid var(--secondary);
+      color: var(--background);
+      background-color: var(--secondary);
+    }
+    .btn:hover {
+      background-color: var(--background);
+      color: var(--secondary);
     }
   }
 
@@ -226,11 +266,35 @@ const callFormatText = (text: string, length: number): string =>
       }
 
       .article {
+        position: relative;
         display: flex;
         flex-direction: column;
         background-color: #fff;
         border-radius: 5px;
         box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.369);
+
+        .edit-article,
+        .delete-article {
+          position: absolute;
+          color: #fff;
+          font-size: 1.2rem;
+          padding: 0.3rem;
+          cursor: pointer;
+        }
+
+        .edit-article {
+          inset: 0 auto auto 0;
+          background-color: var(--secondary);
+          border-radius: 5px 0 5px 0;
+          box-shadow: 2px 2px 7px black;
+        }
+
+        .delete-article {
+          inset: 0 0 auto auto;
+          background-color: #df4759;
+          border-radius: 0 5px 0 5px;
+          box-shadow: -2px 2px 7px black;
+        }
 
         img {
           max-width: 100%;
