@@ -1,15 +1,20 @@
-<script setup>
+<script setup lang="ts">
 import { Icon } from "@iconify/vue";
+// Admin user
 const admin = useFirebaseUser();
 
-const isOpen = ref(false);
-const selectedVideo = ref({});
+// Fetch videos and get videos state
+fetchVideos();
+const videos = useVideos();
 
-const { data } = await useFetch("/api/videos").catch(err => console.log(err));
+// Get selected video state
+const selectedVideo = useSelectedVideo();
 
-const openModal = video => {
-  selectedVideo.value = video;
-  isOpen.value = true;
+const isModalEditVideoOpen = ref(false);
+
+const openModalEditVideo = ({ uuid, url }): void => {
+  selectedVideo.value = { uuid, url };
+  isModalEditVideoOpen.value = true;
 };
 </script>
 <template>
@@ -18,7 +23,7 @@ const openModal = video => {
       title="meus vídeos"
       subtitle="confira meus principais vídeos do youtube" />
     <section>
-      <div class="video" v-for="(video, index) in data" :key="index">
+      <div class="video" v-for="(video, index) in videos" :key="index">
         <iframe
           width="100%"
           style="aspect-ratio: 560/315"
@@ -27,7 +32,10 @@ const openModal = video => {
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen></iframe>
-        <button v-if="admin" @click="openModal(video)" class="edit-video">
+        <button
+          v-if="admin"
+          @click="openModalEditVideo(video)"
+          class="edit-video">
           <Icon class="edit-icon" icon="ci:edit" />
         </button>
       </div>
@@ -39,7 +47,12 @@ const openModal = video => {
       class="btn">
       ver todos
     </a>
-    <Modal v-show="isOpen" :video="selectedVideo" @close="isOpen = false" />
+    <ModalFrame
+      v-show="isModalEditVideoOpen"
+      title="Editar vídeo"
+      @close="isModalEditVideoOpen = false">
+      <ModalVideoEdit @close="isModalEditVideoOpen = false" />
+    </ModalFrame>
   </div>
 </template>
 
@@ -81,20 +94,17 @@ const openModal = video => {
       .edit-video {
         z-index: 2;
         position: absolute;
-        color: #fff;
+        color: var(--secondary);
         font-size: 1.2rem;
         padding: 0.3rem;
         cursor: pointer;
-      }
-
-      .edit-video {
         inset: 0 0 auto auto;
-        background-color: var(--secondary);
-        border-radius: 5px 0 5px 0;
-        box-shadow: 2px 2px 7px black;
+        background-color: #fff;
+        box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.428);
       }
     }
   }
+
   .btn {
     border: 1px solid var(--background);
     color: var(--secondary);

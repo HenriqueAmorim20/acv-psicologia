@@ -8,12 +8,10 @@ const user = useFirebaseUser();
 
 const signIn = async () => {
   const credentials = await signInUser(email.value, password.value);
-  console.log(credentials);
 };
 
 const signOut = async () => {
   const result = await signOutUser();
-  console.log(result);
 };
 </script>
 
@@ -22,12 +20,7 @@ const signOut = async () => {
     <form v-if="!user" @submit.prevent="signIn">
       <Title title="admin" color="var(--secondary)" />
       <div class="form-group">
-        <input
-          type="email"
-          class="form-control"
-          id="email"
-          v-model="email"
-          placeholder="email" />
+        <input type="email" class="form-control" id="email" v-model="email" placeholder="email" />
         <Icon class="icon" icon="carbon:email" />
       </div>
       <div class="form-group">
@@ -40,9 +33,7 @@ const signOut = async () => {
         <Icon
           class="icon"
           @click="hide = !hide"
-          :icon="
-            hide ? 'ic:outline-visibility-off' : 'ic:outline-visibility'
-          " />
+          :icon="hide ? 'ic:outline-visibility-off' : 'ic:outline-visibility'" />
       </div>
       <button type="submit">Login</button>
     </form>

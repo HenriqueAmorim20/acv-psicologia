@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import { Icon } from "@iconify/vue";
+import { formatText, formatDate } from "@/composables/utils";
 
+// Fetch articles and get articles state
+fetchArticles();
 const articles = useArticles();
-
-const callFormatDate = (articleDate: number): string => formatDate(articleDate);
-const callFormatText = (text: string, length: number): string =>
-  formatText(text, length);
 </script>
 
 <template>
@@ -14,24 +13,19 @@ const callFormatText = (text: string, length: number): string =>
       title="publicações"
       subtitle="assuntos relevantes na psicoterapia"
       color="var(--secondary)" />
-    <div class="articles">
-      <div
-        class="article"
-        v-for="(article, index) in articles.slice(0, 5)"
-        :key="index">
+    <div class="articles" v-if="articles">
+      <div class="article" v-for="(article, index) in articles.slice(0, 5)" :key="index">
         <span class="date">
-          {{ callFormatDate(article.date["_seconds"]) }}
+          {{ formatDate(article.date) }}
         </span>
         <img :src="article.image" alt="" />
         <div class="article-content">
-          <h1>{{ callFormatText(article.title, 23) }}</h1>
-          <p>{{ callFormatText(article.desc, 180) }}</p>
-          <div class="link">
-            <NuxtLink :to="`/publicacoes/${article.uuid}`" class="text">
-              Ler Mais
-            </NuxtLink>
+          <h1>{{ formatText(article.title, 40) }}</h1>
+          <p>{{ formatText(article.desc, 170) }}</p>
+          <NuxtLink :to="`/publicacoes/${article.uuid}`" class="link">
+            <span> Ler Mais </span>
             <Icon class="icon" icon="akar-icons:chevron-right" />
-          </div>
+          </NuxtLink>
         </div>
       </div>
     </div>
@@ -50,10 +44,11 @@ const callFormatText = (text: string, length: number): string =>
     max-width: 1200px;
     margin: 3rem auto;
     display: grid;
+    grid-auto-columns: minmax(0, 1fr);
     grid-template-areas:
-      " first second third third"
-      " first second fourth fourth"
-      " first second fifth fifth";
+      " first first second second third third third"
+      " first first second second fourth fourth fourth"
+      " first first second second fifth fifth fifth";
     gap: 1rem;
 
     .article {
@@ -78,6 +73,7 @@ const callFormatText = (text: string, length: number): string =>
       img {
         width: 100%;
         object-fit: cover;
+        aspect-ratio: 4/3;
         border-radius: 5px 5px 0 0;
       }
 
@@ -100,22 +96,18 @@ const callFormatText = (text: string, length: number): string =>
           align-items: center;
           color: var(--secondary);
           text-transform: capitalize;
+          text-decoration: none;
           cursor: pointer;
           width: fit-content;
-
-          .text {
-            color: var(--secondary);
-            text-decoration: none;
-          }
 
           .icon {
             margin-left: 0.5rem;
           }
-        }
 
-        .link:hover {
-          text-decoration: underline;
-          text-decoration-color: var(--secondary);
+          &:hover {
+            text-decoration: underline;
+            text-decoration-color: var(--secondary);
+          }
         }
       }
     }

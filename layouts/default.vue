@@ -1,7 +1,3 @@
-<script setup lang="ts">
-setArticles();
-</script>
-
 <template>
   <div>
     <LayoutsNavbar />

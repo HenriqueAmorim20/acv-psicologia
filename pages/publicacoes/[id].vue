@@ -1,34 +1,22 @@
 <script setup lang="ts">
 import { Icon } from "@iconify/vue";
+import { formatDate } from "~~/composables/utils";
 
 const route = useRoute();
 const articles = useArticles();
-const paragraph = ref(null);
 const id = route.params.id;
 
 const article = articles.value.filter(item => item.uuid === id)[0];
-
-onMounted(() => {
-  window.scrollTo(0, 0);
-  paragraph.value.innerHTML = article.desc;
-});
-
-const callFormatDate = (articleDate: number): string => formatDate(articleDate);
 </script>
 
 <template>
   <div class="publicacao" v-if="article">
-    <section
-      class="bg-image"
-      :style="`background-image: url(${article.image})`">
-      <Title
-        :title="article.title"
-        color="var(--secondary)"
-        :subtitle="article.category" />
+    <section class="bg-image" :style="`background-image: url(${article.image})`">
+      <Title :title="article.title" color="var(--secondary)" :subtitle="article.category" />
     </section>
     <section class="content">
-      <span class="date">{{ callFormatDate(article.date["_seconds"]) }}</span>
-      <p class="desc" ref="paragraph"></p>
+      <span class="date">{{ formatDate(article.date) }}</span>
+      <p class="desc">{{ article.desc }}</p>
     </section>
   </div>
 </template>

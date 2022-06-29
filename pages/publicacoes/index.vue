@@ -1,50 +1,50 @@
 <script setup lang="ts">
 import { Icon } from "@iconify/vue";
+import { formatText, formatDate } from "@/composables/utils";
 
-let searchFilter = ref("");
-let categoryFilter = ref("");
-
+// Get user admin state
 const user = useFirebaseUser();
 
-const isOpen = ref(false);
-const selectedArticle = ref({});
-
+// Fetch articles, get articles state and categories
+const data = await fetchArticles();
 const articles = useArticles();
 
-const articlesData = ref(articles.value);
+const selectedArticle = useSelectedArticle();
 
-const categories = [
-  ...new Set(articles.value.map((a: any) => a.category)),
-].sort();
+const searchFilter = ref("");
+const categoryFilter = ref("");
+const filters = computed(() => {
+  return {
+    search: searchFilter.value,
+    category: categoryFilter.value,
+  };
+});
 
-const setCategory = (category: any): void => {
-  categoryFilter.value =
-    categoryFilter.value === category ? "" : category.toString();
-};
-
-const filterArticles = (): void => {
-  articlesData.value = articles.value;
-  if (searchFilter.value.length > 0) {
-    articlesData.value = articlesData.value.filter((a: any) =>
-      a.title.toLowerCase().includes(searchFilter.value.toLowerCase())
+watch(filters, async ({ search, category }) => {
+  articles.value = data.articlesDefault;
+  if (search.length > 0) {
+    articles.value = articles.value.filter((a: any) =>
+      a.title.toLowerCase().includes(search.toLowerCase())
     );
   }
-  if (categoryFilter.value) {
-    articlesData.value = articlesData.value.filter(
-      (a: any) => a.category === categoryFilter.value
-    );
+  if (category) {
+    articles.value = articles.value.filter((a: any) => a.category === category);
   }
+});
+
+const isModalDeleteArticleOpen = ref(false);
+const isModalEditAddArticleOpen = ref(false);
+
+const openModalDeleteArticle = ({ uuid, title, desc, category, image, date }): void => {
+  selectedArticle.value = { uuid, title, desc, category, image, date };
+  isModalDeleteArticleOpen.value = true;
 };
 
-watchEffect(() => filterArticles());
-
-const callFormatDate = (articleDate: number): string => formatDate(articleDate);
-const callFormatText = (text: string, length: number): string =>
-  formatText(text, length);
-
-const openModal = article => {
-  selectedArticle.value = article;
-  isOpen.value = true;
+const openModalEditAddArticle = ({ uuid, title, desc, category, image, date }): void => {
+  selectedArticle.value = uuid
+    ? { uuid, title, desc, category, image, date }
+    : { title, desc, category, image, date };
+  isModalEditAddArticleOpen.value = true;
 };
 </script>
 
@@ -55,66 +55,77 @@ const openModal = article => {
         title="publicações"
         subtitle="assuntos relevantes na psicoterapia"
         color="var(--secondary)" />
-      <button v-if="user" class="btn">adicionar publicação</button>
+      <button
+        v-if="user"
+        @click="
+          openModalEditAddArticle({
+            uuid: null,
+            title: null,
+            desc: null,
+            category: null,
+            image: '/consultorio/2.jpeg',
+            date: null,
+          })
+        "
+        class="btn">
+        adicionar publicação
+      </button>
     </section>
     <section class="content">
-      <div class="filters">
-        <div class="search">
-          <input
-            type="text"
-            placeholder="Pesquisar..."
-            v-model="searchFilter" />
-          <Icon class="search-icon" icon="carbon:search" />
-        </div>
-        <div class="categories">
-          <h1>Categorias</h1>
-          <div
-            class="category"
-            v-for="(category, index) in categories"
-            :key="index">
-            <span
-              :class="categoryFilter === category ? 'active-category' : ''"
-              @click="setCategory(category)">
-              {{ category }}
-            </span>
+      <client-only>
+        <div class="filters">
+          <div class="search">
+            <input type="text" placeholder="Pesquisar..." v-model="searchFilter" />
+            <Icon class="search-icon" icon="carbon:search" />
           </div>
-        </div>
-      </div>
-      <div class="articles">
-        <h3 v-if="!articlesData.length" class="no-result">
-          Nenhum resultado encontrado!
-        </h3>
-        <div
-          class="article"
-          v-for="(article, index) in articlesData"
-          :key="index">
-          <img :src="article.image" alt="" />
-          <div class="article-content">
-            <button class="edit-article">
-              <Icon class="edit-icon" icon="ci:edit" />
-            </button>
-            <button @click="openModal(article)" class="delete-article">
-              <Icon class="delete-icon" icon="carbon:delete" />
-            </button>
-            <span class="date">
-              {{ callFormatDate(article.date["_seconds"]) }}
-            </span>
-            <h1>{{ callFormatText(article.title, 23) }}</h1>
-            <p>{{ callFormatText(article.desc, 150) }}</p>
-            <div class="link">
-              <NuxtLink :to="`/publicacoes/${article.uuid}`" class="text">
-                Ler Mais
-              </NuxtLink>
-              <Icon class="icon" icon="akar-icons:chevron-right" />
+          <div class="categories">
+            <h1>Categorias</h1>
+            <div class="category" v-for="(category, index) in data?.categories" :key="index">
+              <span
+                :class="categoryFilter === category ? 'active-category' : ''"
+                @click="categoryFilter = categoryFilter === category ? '' : category">
+                <span>{{ category }}</span>
+              </span>
             </div>
           </div>
         </div>
-      </div>
+        <div class="articles">
+          <h3 v-if="!articles?.length" class="no-result">Nenhum resultado encontrado!</h3>
+          <div v-else class="article" v-for="(article, index) in articles" :key="index">
+            <img :src="article.image" alt="" />
+            <div class="article-content">
+              <button v-if="user" @click="openModalEditAddArticle(article)" class="edit-article">
+                <Icon class="edit-icon" icon="ci:edit" />
+              </button>
+              <button v-if="user" @click="openModalDeleteArticle(article)" class="delete-article">
+                <Icon class="delete-icon" icon="carbon:delete" />
+              </button>
+              <span class="date">
+                {{ formatDate(article.date) }}
+              </span>
+              <h1>{{ formatText(article.title, 23) }}</h1>
+              <p>{{ formatText(article.desc, 150) }}</p>
+              <NuxtLink :to="`/publicacoes/${article.uuid}`" class="link">
+                <span> Ler Mais </span>
+                <Icon class="icon" icon="akar-icons:chevron-right" />
+              </NuxtLink>
+            </div>
+          </div>
+        </div>
+      </client-only>
     </section>
-    <ModalDelete
-      v-show="isOpen"
-      :article="selectedArticle"
-      @close="isOpen = false" />
+    <ModalFrame
+      v-show="isModalDeleteArticleOpen"
+      title="Excluir publicação"
+      @close="isModalDeleteArticleOpen = false">
+      <ModalArticleDelete @close="isModalDeleteArticleOpen = false" />
+    </ModalFrame>
+    <ModalFrame
+      v-show="isModalEditAddArticleOpen"
+      :title="selectedArticle?.uuid?.length ? 'Editar publicação' : 'Adicionar publicação'"
+      @close="isModalEditAddArticleOpen = false">
+      <ModalArticleEditAdd @close="isModalEditAddArticleOpen = false" />
+    </ModalFrame>
   </div>
 </template>
 
@@ -217,10 +228,13 @@ const openModal = article => {
         }
 
         .category {
-          cursor: pointer;
           font-size: 1rem;
           text-transform: capitalize;
           transition: 0.4s ease;
+
+          span {
+            cursor: pointer;
+          }
           &::after {
             content: "";
             display: block;
@@ -275,25 +289,24 @@ const openModal = article => {
 
         .edit-article,
         .delete-article {
-          position: absolute;
-          color: #fff;
-          font-size: 1.2rem;
-          padding: 0.3rem;
           cursor: pointer;
+          z-index: 2;
+          position: absolute;
+          padding: 0.3rem;
+          font-size: 1.2rem;
         }
-
         .edit-article {
           inset: 0 auto auto 0;
-          background-color: var(--secondary);
-          border-radius: 5px 0 5px 0;
-          box-shadow: 2px 2px 7px black;
+          color: var(--secondary);
+          background-color: #fff;
+          box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.428);
         }
 
         .delete-article {
           inset: 0 0 auto auto;
+          color: #fff;
           background-color: #df4759;
-          border-radius: 0 5px 0 5px;
-          box-shadow: -2px 2px 7px black;
+          box-shadow: -2px 2px 7px rgba(0, 0, 0, 0.428);
         }
 
         img {
@@ -329,22 +342,18 @@ const openModal = article => {
             align-items: center;
             color: var(--secondary);
             text-transform: capitalize;
+            text-decoration: none;
             cursor: pointer;
             width: fit-content;
-
-            .text {
-              color: var(--secondary);
-              text-decoration: none;
-            }
 
             .icon {
               margin-left: 0.5rem;
             }
-          }
 
-          .link:hover {
-            text-decoration: underline;
-            text-decoration-color: var(--secondary);
+            &:hover {
+              text-decoration: underline;
+              text-decoration-color: var(--secondary);
+            }
           }
         }
       }
