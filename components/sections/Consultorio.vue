@@ -10,10 +10,7 @@ let qtd: any = ref(4);
       subtitle="SCN Quadra 2, Shopping Liberty Mall, Torre B, Sala 521"
       color="var(--secondary)" />
     <section class="photos">
-      <img
-        v-for="index in qtd"
-        :key="index"
-        :src="`/consultorio/${index}.jpeg`" />
+      <img v-for="index in qtd" :key="index" :src="`/consultorio/${index}.jpeg`" />
     </section>
     <button class="btn" @click="qtd = qtd < 8 ? 8 : 4">
       {{ qtd < 8 ? "mostrar mais" : "mostrar menos" }}

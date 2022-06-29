@@ -19,9 +19,7 @@ const openModalEditVideo = ({ uuid, url }): void => {
 </script>
 <template>
   <div class="videos" id="videosSection">
-    <Title
-      title="meus vídeos"
-      subtitle="confira meus principais vídeos do youtube" />
+    <Title title="meus vídeos" subtitle="confira meus principais vídeos do youtube" />
     <section>
       <div class="video" v-for="(video, index) in videos" :key="index">
         <iframe
@@ -32,10 +30,7 @@ const openModalEditVideo = ({ uuid, url }): void => {
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen></iframe>
-        <button
-          v-if="admin"
-          @click="openModalEditVideo(video)"
-          class="edit-video">
+        <button v-if="admin" @click="openModalEditVideo(video)" class="edit-video">
           <Icon class="edit-icon" icon="ci:edit" />
         </button>
       </div>

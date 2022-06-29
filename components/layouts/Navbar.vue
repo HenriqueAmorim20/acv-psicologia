@@ -52,9 +52,7 @@ function handleNavbar() {
   const navbarEl = document.querySelector(".navbar") as HTMLElement;
 
   navbarEl.style.backgroundColor =
-    drawer || window.scrollY < window.innerHeight / 3
-      ? "transparent"
-      : "var(--background)";
+    drawer || window.scrollY < window.innerHeight / 3 ? "transparent" : "var(--background)";
 
   navbarEl.style.transform =
     // drawer opened
@@ -62,9 +60,7 @@ function handleNavbar() {
     // drawer closed and current scroll is smaller than a third of the viewport height
     (!drawer && window.scrollY < window.innerHeight / 3) ||
     // drawer closed, scroll direction is up and current scroll is smaller than a third of the viewport height
-    (!drawer &&
-      scrollPosition >= window.scrollY &&
-      window.scrollY > window.innerHeight / 3)
+    (!drawer && scrollPosition >= window.scrollY && window.scrollY > window.innerHeight / 3)
       ? "translateY(0)" // shows navbar
       : "translateY(-105%)"; // hides navbar
 
@@ -134,12 +130,7 @@ function scrollTo(item: MenuItem): void {
       </NuxtLink>
       <NuxtLink to="/">
         <img
-          @click="
-            [
-              toggleDrawer(),
-              scrollTo({ name: null, path: '/', id: 'homeSection' }),
-            ]
-          "
+          @click="[toggleDrawer(), scrollTo({ name: null, path: '/', id: 'homeSection' })]"
           class="drawer-logo"
           id="drawer-logo"
           src="/logos/logo.png"

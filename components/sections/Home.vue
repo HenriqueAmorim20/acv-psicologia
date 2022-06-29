@@ -7,17 +7,11 @@ import { Icon } from "@iconify/vue";
     <div class="introduction">
       <h1 class="name">Ana Carolina Villaça</h1>
       <h2 class="role">Psicóloga Clínica</h2>
-      <p class="phrase">
-        "Um pássaro não canta por estar feliz, ele está feliz porque canta."
-      </p>
+      <p class="phrase">"Um pássaro não canta por estar feliz, ele está feliz porque canta."</p>
     </div>
 
     <aside class="social-media">
-      <a
-        class="link"
-        href="https://wa.me/5561981170400"
-        target="_blank"
-        rel="noopener noreferrer">
+      <a class="link" href="https://wa.me/5561981170400" target="_blank" rel="noopener noreferrer">
         <Icon class="link-icon" icon="ph:whatsapp-logo-thin" />
       </a>
       <a

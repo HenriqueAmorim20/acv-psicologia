@@ -15,25 +15,17 @@ import { Icon } from "@iconify/vue";
         <h1 class="name">Ana Carolina Villaça</h1>
         <b class="crp">CRP: 01/12930</b>
         <span class="desc">
-          Especialista em bla bla bla bla bla. Profissional de psicoterapia com
-          x anos de experiência.
+          Especialista em bla bla bla bla bla. Profissional de psicoterapia com x anos de
+          experiência.
         </span>
+        <span class="desc"> Lorem ipsum dolor sit amet consectetur adipisicing. </span>
+        <span class="desc"> Lorem ipsum dolor sit amet consectetur adipisicing. </span>
         <span class="desc">
-          Lorem ipsum dolor sit amet consectetur adipisicing.
-        </span>
-        <span class="desc">
-          Lorem ipsum dolor sit amet consectetur adipisicing.
-        </span>
-        <span class="desc">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum
-          dolor sit amet consectetur adipisicing elit.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet
+          consectetur adipisicing elit.
         </span>
         <div class="social-media">
-          <a
-            class="link"
-            href="mailto:hacmelo@gmail.com"
-            target="_blank"
-            rel="noopener noreferrer">
+          <a class="link" href="mailto:hacmelo@gmail.com" target="_blank" rel="noopener noreferrer">
             <Icon class="link-icon" icon="carbon:email" />
           </a>
           <a

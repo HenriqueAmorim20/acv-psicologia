@@ -14,10 +14,7 @@ const props = defineProps({
     <div class="modal">
       <header>
         <h1>{{ props.title }}</h1>
-        <Icon
-          class="close-icon"
-          icon="clarity:close-line"
-          @click="emit('close')" />
+        <Icon class="close-icon" icon="clarity:close-line" @click="emit('close')" />
       </header>
       <slot />
     </div>
