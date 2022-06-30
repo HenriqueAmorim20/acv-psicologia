@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { onMounted } from "vue";
-onMounted(() => {
+onBeforeMount(() => {
   window.scrollTo(0, 0);
 });
 </script>

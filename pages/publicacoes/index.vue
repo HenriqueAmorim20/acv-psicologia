@@ -2,6 +2,10 @@
 import { Icon } from "@iconify/vue";
 import { formatText, formatDate } from "@/composables/utils";
 
+onBeforeMount(() => {
+  window.scrollTo(0, 0);
+});
+
 // Get user admin state
 const user = useFirebaseUser();
 

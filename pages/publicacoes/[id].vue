@@ -2,6 +2,10 @@
 import { Icon } from "@iconify/vue";
 import { formatDate } from "~~/composables/utils";
 
+onBeforeMount(() => {
+  window.scrollTo(0, 0);
+});
+
 const route = useRoute();
 const articles = useArticles();
 const id = route.params.id;
