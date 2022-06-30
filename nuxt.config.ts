@@ -15,6 +15,7 @@ export default defineNuxtConfig({
         { name: "format-detection", content: "telephone=no" },
       ],
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.png" }],
+      script: [{ src: "https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js" }],
     },
   },
   css: ["~/assets/css/global.css"],
