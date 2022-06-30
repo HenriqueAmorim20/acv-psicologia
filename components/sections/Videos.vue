@@ -16,6 +16,8 @@ const openModalEditVideo = ({ uuid, url }): void => {
   selectedVideo.value = { uuid, url };
   isModalEditVideoOpen.value = true;
 };
+
+reveal(".videos .btn", 2500, 0, "top", 200);
 </script>
 <template>
   <div class="videos" id="videosSection">

@@ -15,6 +15,7 @@ const props = defineProps({
     default: "#fff",
   },
 });
+reveal("header", 2500, 10, "bottom", 100);
 </script>
 
 <template>

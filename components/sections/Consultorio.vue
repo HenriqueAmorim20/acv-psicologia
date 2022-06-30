@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
 let qtd: any = ref(4);
+reveal(".photos img", 2500, 20, "bottom", 200, 50);
+reveal(".consultorio .btn", 2500, 0, "bottom", 0);
 </script>
 
 <template>

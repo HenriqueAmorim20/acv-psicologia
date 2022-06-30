@@ -1,5 +1,11 @@
 <script setup lang="ts">
 import { Icon } from "@iconify/vue";
+
+reveal("#sobreImage", 2500, 0, "bottom", 200);
+reveal("#sobreName", 2500, 0, "bottom", 200);
+reveal("#sobreCrp", 2500, 0, "bottom", 200);
+reveal(".desc", 2500, 10, "right", 200, 30);
+reveal("aside .social-media a", 2500, 10, "bottom", 100, 50);
 </script>
 
 <template>
@@ -10,10 +16,10 @@ import { Icon } from "@iconify/vue";
       color="var(--secondary)"
       style="z-index: 2" />
     <div class="sobre-content">
-      <div class="image" />
+      <div class="image" id="sobreImage" />
       <aside>
-        <h1 class="name">Ana Carolina Villaça</h1>
-        <b class="crp">CRP: 01/12930</b>
+        <h1 class="name" id="sobreName">Ana Carolina Villaça</h1>
+        <b class="crp" id="sobreCrp">CRP: 01/12930</b>
         <span class="desc">
           Especialista em bla bla bla bla bla. Profissional de psicoterapia com x anos de
           experiência.

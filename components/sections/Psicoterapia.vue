@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+reveal(".psicoterapia section p", 2500, 30, "left", 200, 150);
+</script>
 
 <template>
   <div class="psicoterapia" id="psicoterapiaSection">

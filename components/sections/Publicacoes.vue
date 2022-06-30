@@ -5,6 +5,9 @@ import { formatText, formatDate } from "@/composables/utils";
 // Fetch articles and get articles state
 fetchArticles();
 const articles = useArticles();
+
+reveal(".publicacoes .btn", 2500, 0, "top", 200);
+reveal(".article-content", 2500, 0, "top", 400);
 </script>
 
 <template>
@@ -29,7 +32,9 @@ const articles = useArticles();
         </div>
       </div>
     </div>
-    <NuxtLink to="/publicacoes" class="btn">ver todas</NuxtLink>
+    <NuxtLink to="/publicacoes">
+      <button class="btn">ver todas</button>
+    </NuxtLink>
   </div>
 </template>
 

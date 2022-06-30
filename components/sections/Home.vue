@@ -1,16 +1,22 @@
 <script setup lang="ts">
 import { Icon } from "@iconify/vue";
+reveal("#homeName", 2500, 40, "left", 0);
+reveal("#homeRole", 2500, 40, "left", 200);
+reveal("#homePhrase", 2500, 40, "left", 400);
+reveal("#homeSocial", 2500, 40, "bottom", 0);
 </script>
 
 <template>
   <div class="homeSection" id="homeSection">
     <div class="introduction">
-      <h1 class="name">Ana Carolina Villaça</h1>
-      <h2 class="role">Psicóloga Clínica</h2>
-      <p class="phrase">"Um pássaro não canta por estar feliz, ele está feliz porque canta."</p>
+      <h1 class="name" id="homeName">Ana Carolina Villaça</h1>
+      <h2 class="role" id="homeRole">Psicóloga Clínica</h2>
+      <p class="phrase" id="homePhrase">
+        "Um pássaro não canta por estar feliz, ele está feliz porque canta."
+      </p>
     </div>
 
-    <aside class="social-media">
+    <aside class="social-media" id="homeSocial">
       <a class="link" href="https://wa.me/5561981170400" target="_blank" rel="noopener noreferrer">
         <Icon class="link-icon" icon="ph:whatsapp-logo-thin" />
       </a>

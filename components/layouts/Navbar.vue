@@ -36,6 +36,9 @@ const menuItems: Array<MenuItem> = [
   },
 ];
 
+reveal(".navbar-logo", 2000, 60, "top", 0);
+reveal(".menu-icon", 2000, 60, "top", 250);
+
 onMounted(onInit);
 onUnmounted(onDestroy);
 
