@@ -62,7 +62,7 @@ const uploadFileToBucket = async () => {
     "publicacoes/" + article.value.image?.file?.name,
     article.value.image?.result
   ).catch(err => {
-    throw "não foi possível salvar o arquivo";
+    throw "não foi possível salvar o arquivo" + err;
   });
   if (snapshot) return downloadUrl;
 };
