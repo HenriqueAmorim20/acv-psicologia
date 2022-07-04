@@ -58,6 +58,8 @@ const editArticle = async () => {
 };
 
 const uploadFileToBucket = async () => {
+  console.log("debug upload", article.value.image.file);
+  console.log("debug upload", article.value.image.result);
   const { snapshot, downloadUrl, metadata } = await saveFile(
     "publicacoes/" + article.value.image?.file?.name,
     article.value.image?.result
@@ -70,6 +72,7 @@ const uploadFileToBucket = async () => {
 const onFileChange = async e => {
   let files = e.target.files || e.dataTransfer.files;
   if (!files.length) return;
+  console.log("debug file change", files[0]);
   article.value.image = await uploadFile(files[0]);
 };
 </script>
