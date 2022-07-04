@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from "@iconify/vue";
-const emit = defineEmits(["close"]);
+const emit = defineEmits(["close", "fileChange", "fileUploading"]);
 const article = useSelectedArticle();
 
 const handleArticle = async () => {
@@ -9,7 +9,7 @@ const handleArticle = async () => {
     !article.value.category?.length ||
     !article.value.desc?.length ||
     !article.value.date ||
-    !article.value.image
+    !article.value.image.result
   )
     return;
   if (article.value.uuid?.length) await editArticle();
@@ -19,35 +19,58 @@ const handleArticle = async () => {
 };
 
 const addArticle = async () => {
-  console.log("salvando", article.value);
-
-  await useFetch(`/api/publicacoes`, {
-    method: "POST",
-    body: JSON.stringify(article.value),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }).catch(err => console.log(err));
+  try {
+    article.value.image = await uploadFileToBucket();
+    await useFetch(`/api/publicacoes`, {
+      method: "POST",
+      body: JSON.stringify(article.value),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const editArticle = async () => {
-  console.log("editando", article.value);
-  await useFetch(`/api/publicacoes`, {
-    method: "PATCH",
-    body: JSON.stringify({
-      id: article.value.uuid,
-      publicacao: {
-        title: article.value.title,
-        desc: article.value.desc,
-        category: article.value.category,
-        image: article.value.image,
-        date: article.value.date,
+  try {
+    article.value.image = await uploadFileToBucket();
+    await useFetch(`/api/publicacoes`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        id: article.value.uuid,
+        publicacao: {
+          title: article.value.title,
+          desc: article.value.desc,
+          category: article.value.category,
+          image: article.value.image,
+          date: article.value.date,
+        },
+      }),
+      headers: {
+        "Content-Type": "application/json",
       },
-    }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }).catch(err => console.log(err));
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const uploadFileToBucket = async () => {
+  const { snapshot, downloadUrl, metadata } = await saveFile(
+    "publicacoes/" + article.value.image?.file?.name,
+    article.value.image?.result
+  ).catch(err => {
+    throw "não foi possível salvar o arquivo";
+  });
+  if (snapshot) return downloadUrl;
+};
+
+const onFileChange = async e => {
+  let files = e.target.files || e.dataTransfer.files;
+  if (!files.length) return;
+  article.value.image = await uploadFile(files[0]);
 };
 </script>
 
@@ -79,6 +102,10 @@ const editArticle = async () => {
       <div class="form-group">
         <label for="date">Data</label>
         <input type="date" id="date" v-model="article.date" placeholder="Data" required />
+      </div>
+      <div class="form-group">
+        <label for="date">Imagem</label>
+        <input type="file" @change="onFileChange" placeholder="Data" required />
       </div>
     </div>
     <div class="actions">
