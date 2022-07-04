@@ -142,7 +142,7 @@ const openModalEditAddArticle = ({ uuid, title, desc, category, image, date }): 
     align-items: center;
     justify-content: center;
     position: relative;
-    background-image: url("/publicacoes/bg.jpg");
+    background-image: url("/publicacoes/bg.jpeg");
     background-size: cover;
     background-position: center;
     width: 100%;

@@ -63,7 +63,7 @@ reveal(".psicoterapia section p", 2500, 30, "left", 200, 150);
 
   aside {
     width: 35%;
-    background-image: url("/psicoterapia/abacaxi.jpg");
+    background-image: url("/psicoterapia/abacaxi.jpeg");
     background-size: cover;
     background-position: center;
   }

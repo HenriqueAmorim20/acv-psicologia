@@ -4,7 +4,7 @@ import { Icon } from "@iconify/vue";
 reveal("#sobreImage", 2500, 0, "bottom", 200);
 reveal("#sobreName", 2500, 0, "bottom", 200);
 reveal("#sobreCrp", 2500, 0, "bottom", 200);
-reveal(".desc", 2500, 10, "right", 200, 30);
+reveal(".desc", 2500, 10, "bottom", 200, 30);
 reveal("aside .social-media a", 2500, 10, "bottom", 100, 50);
 </script>
 
@@ -63,7 +63,7 @@ reveal("aside .social-media a", 2500, 10, "bottom", 100, 50);
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url("/sobre/bg.jpg");
+  background-image: url("/sobre/bg.jpeg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

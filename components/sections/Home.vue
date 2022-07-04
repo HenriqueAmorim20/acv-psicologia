@@ -40,7 +40,7 @@ reveal("#homeSocial", 2500, 40, "bottom", 0);
 <style lang="scss" scoped>
 .homeSection {
   min-height: 100vh;
-  background-image: url("/backgrounds/background.jpg");
+  background-image: url("/backgrounds/background.jpeg");
   background-size: cover;
   background-position: center;
   position: relative;
@@ -145,7 +145,7 @@ reveal("#homeSocial", 2500, 40, "bottom", 0);
 
 @media only screen and (max-width: 600px) {
   .homeSection {
-    background-image: url("/backgrounds/background-mobile.jpg");
+    background-image: url("/backgrounds/background-mobile.jpeg");
     background-position: right;
   }
 }
