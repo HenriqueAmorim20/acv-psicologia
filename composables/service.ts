@@ -24,7 +24,10 @@ export const updateVideo = async (id: string, url: string): Promise<void> => {
 
 export const fetchArticles = async (): Promise<any> => {
   try {
-    const articlesDefault: any = await $fetch("/api/publicacoes");
+    let articlesDefault: any = await $fetch("/api/publicacoes");
+    articlesDefault = articlesDefault.sort((a, b) => {
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
+    });
     const categories = [...new Set(articlesDefault.map((a: any) => a.category))].sort();
     const articles = useArticles();
     articles.value = articlesDefault;
