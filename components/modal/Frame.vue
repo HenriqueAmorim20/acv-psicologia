@@ -51,6 +51,7 @@ const props = defineProps({
       padding-bottom: 0.5rem;
       margin-bottom: 1rem;
       border-bottom: 1px solid rgb(193, 193, 193);
+      opacity: 1 !important;
       h1 {
         font-size: 1.5rem;
       }

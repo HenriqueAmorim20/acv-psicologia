@@ -50,7 +50,7 @@ header {
   h2 {
     text-align: center;
     font-size: 1.1rem;
-    max-width: 450px;
+    max-width: 480px;
     margin-top: 0.5rem;
     font-family: "WorkSansLight";
     font-weight: normal;
