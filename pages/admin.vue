@@ -61,7 +61,7 @@ const signOut = async () => {
     border-radius: 5px;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.448);
     margin: 5rem 1rem 0;
-    width: 400px;
+    min-width: 400px;
 
     .form-group {
       position: relative;
