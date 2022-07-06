@@ -31,7 +31,11 @@ reveal("aside .social-media a", 2500, 10, "bottom", 100, 50);
           consectetur adipisicing elit.
         </span>
         <div class="social-media">
-          <a class="link" href="mailto:hacmelo@gmail.com" target="_blank" rel="noopener noreferrer">
+          <a
+            class="link"
+            href="mailto:psicologia.12930@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer">
             <Icon class="link-icon" icon="carbon:email" />
           </a>
           <a
