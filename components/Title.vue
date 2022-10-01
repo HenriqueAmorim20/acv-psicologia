@@ -64,15 +64,6 @@ header {
     font-size: 2rem;
     color: var(--dynamic-color);
   }
-
-  .icon::after,
-  .icon::before {
-    display: block;
-    content: "";
-    width: 50px;
-    border-bottom: 1px solid var(--dynamic-color);
-    margin: 0 0.5rem;
-  }
 }
 
 @media only screen and (max-width: 500px) {
