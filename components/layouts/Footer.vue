@@ -23,20 +23,23 @@ function scrollTop() {
           href="https://wa.me/5561981170400"
           target="_blank"
           rel="noopener noreferrer">
-          <Icon class="link-icon" icon="akar-icons:whatsapp-fill" />
+          <Icon class="link-icon" icon="ri:whatsapp-fill" />
         </a>
         <a
           class="link"
           href="https://www.instagram.com/psicologa_anacarolinavillaca/"
           target="_blank"
           rel="noopener noreferrer">
-          <Icon class="link-icon" icon="akar-icons:instagram-fill" />
+          <Icon class="link-icon" icon="ant-design:instagram-filled" />
         </a>
         <a
           class="link"
           href="https://www.youtube.com/channel/UCFq-F11A86ShC4ha-Crt8Yg"
           target="_blank">
-          <Icon class="link-icon" icon="ant-design:youtube-outlined" />
+          <Icon class="link-icon" icon="ant-design:youtube-filled" />
+        </a>
+        <a class="link" href="https://www.tiktok.com/@acvpsicologia" target="_blank">
+          <Icon class="link-icon" icon="bxl:tiktok" />
         </a>
       </div>
     </section>
