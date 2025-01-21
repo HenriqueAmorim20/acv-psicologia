@@ -9,6 +9,7 @@ onBeforeMount(() => {
     <SectionsHome />
     <SectionsSobre />
     <SectionsPsicoterapia />
+    <SectionsPsicoterapiaDois />
     <SectionsConsultorio />
     <SectionsVideos />
     <SectionsPublicacoes />

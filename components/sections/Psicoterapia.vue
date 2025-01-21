@@ -5,19 +5,27 @@ reveal(".psicoterapia section p", 2500, 30, "left", 200, 150);
 <template>
   <div class="psicoterapia" id="psicoterapiaSection">
     <section>
-      <Title title="psicoterapia" subtitle="conheça mais sobre o processo da psicoterapia" />
+      <Title title="psicoterapia" subtitle="O Processo Psicoterapêutico na ACV Psicologia" />
       <p>
-        The purpose of lorem ipsum is to create a natural looking block of text (sentence,
-        paragraph, page, etc.) that doesn't distract from the layout. A practice not without
-        controversy, laying out pages with meaningless filler text can be very useful when the focus
-        is meant to be on design, not content.
+        Na Ana Carolina Villaça Psicologia, o processo psicoterapêutico, conduzido pela Psicóloga
+        Ana Carolina Villaça, é fundamentado nos princípios da análise do comportamento e busca
+        compreender e promover mudanças nos padrões comportamentais de forma individualizada e
+        contextualizada. Diferentemente de abordagens que trabalham com objetivos genéricos, os
+        objetivos aqui não são arbitrários. Eles são construídos a partir de uma análise cuidadosa
+        da vida singular de cada pessoa, considerando sua história de vida, relações, ambiente e
+        demandas atuais.
       </p>
       <p>
-        The passage experienced a surge in popularity during the 1960s when Letraset used it on
-        their dry-transfer sheets, and again during the 90s as desktop publishers bundled the text
-        with their software. Today it's seen all around the web; on templates, websites, and stock
-        designs. Use our generator to get your own, or read on for the authoritative history of
-        lorem ipsum.
+        O processo psicoterapêutico na ACV Psicologia analisa a vida de maneira profunda e completa,
+        sem se prender a análises superficiais. Ele vai além de uma compreensão imediata da queixa,
+        buscando identificar as origens dos problemas e as contingências que mantêm os padrões de
+        comportamento atuais. Esses padrões não se limitam a comportamentos observáveis, mas
+        abrangem também pensamentos e sentimentos, que são igualmente considerados como eventos
+        comportamentais influenciados pelas experiências de vida e pelo contexto. Portanto, o
+        trabalho realizado na ACV Psicologia não deve ser confundido com uma técnica voltada apenas
+        para a solução de casos pontuais e específicos. O objetivo é promover mudanças
+        significativas e duradouras que proporcionem autonomia e adaptação frente às diversas
+        situações da vida.
       </p>
     </section>
     <aside></aside>
@@ -43,9 +51,9 @@ reveal(".psicoterapia section p", 2500, 30, "left", 200, 150);
     p {
       display: flex;
       font-family: "WorkSansLight";
-      font-size: clamp(1.1rem, 1.5vw, 1.4rem);
+      font-size: clamp(1rem, 1.5vw, 1.1rem);
       text-indent: 2rem;
-      margin: 1rem 0;
+      margin: 0.5rem 0;
       line-height: clamp(1.5rem, 2.5vw, 2rem);
     }
 
@@ -53,11 +61,11 @@ reveal(".psicoterapia section p", 2500, 30, "left", 200, 150);
       content: "";
       display: block;
       border-left: 5px solid var(--background);
-      margin-right: 2rem;
+      margin-right: 1.5rem;
     }
 
     p:first-of-type {
-      margin-top: 5rem;
+      margin-top: 3rem;
     }
   }
 

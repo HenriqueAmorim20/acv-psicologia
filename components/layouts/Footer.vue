@@ -14,7 +14,7 @@ function scrollTop() {
     <section class="left">
       <h1 class="name">ana carolina villaça</h1>
       <span class="description">
-        Especialista em bla bla bla bla bla. Profissional de psicoterapia com x anos de experiência.
+        Psicóloga Clínica e Organizacional com 10 anos de experiência
       </span>
       <b class="crp">CRP: 01/12930</b>
       <div class="social-media">
@@ -54,7 +54,10 @@ function scrollTop() {
       </span>
       <span class="creator">
         Criado por:
-        <a href="http://melohenrique.com" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://www.linkedin.com/in/henriquemelodev/"
+          target="_blank"
+          rel="noopener noreferrer">
           <span>Henrique Melo</span>
           <Icon class="icon" icon="mdi:dev-to" />
         </a>

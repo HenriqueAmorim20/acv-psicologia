@@ -21,14 +21,29 @@ reveal("aside .social-media a", 2500, 10, "bottom", 100, 50);
         <h1 class="name" id="sobreName">Ana Carolina Villaça</h1>
         <b class="crp" id="sobreCrp">CRP: 01/12930</b>
         <span class="desc">
-          Especialista em bla bla bla bla bla. Profissional de psicoterapia com x anos de
-          experiência.
+          Psicóloga Clínica com mais de 10 anos de atuação em clínica, possui título de Especialista
+          em Análise do Comportamento e Terapia por Contingências de Reforçamento (TCR) pelo
+          Instituto de Terapia por Contingências de Campinas/SP.
         </span>
-        <span class="desc"> Lorem ipsum dolor sit amet consectetur adipisicing. </span>
-        <span class="desc"> Lorem ipsum dolor sit amet consectetur adipisicing. </span>
         <span class="desc">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet
-          consectetur adipisicing elit.
+          Psicóloga Organizacional com 10 anos de experiência, possui MBA em Gestão de Pessoa pela
+          Fundação Getúlio Vargas, tendo trabalhado em empresas de grande porte, nacionais e
+          multinacionais, com foco em Recrutamento e Seleção e Treinamento de pessoal, Mapeamento,
+          Desenho e Melhorias de Processos Organizacionais.
+        </span>
+        <span class="desc">
+          Atende adultos, adolescentes e casal com foco em manejo de dilemas pessoais, dificuldades
+          em tomar decisões, ansiedade, depressão, obsessões, compulsões, fobias, automutilação,
+          déficit de autoestima, déficit de habilidades sociais, dentre outras condições
+          psicológicas e sociais, com o objetivo de tornar a vida de quem a procura a mais funcional
+          possível.
+        </span>
+        <span class="desc">
+          Também atende adultos que procuram melhorar sua performance no contexto profissional,
+          ajudando a identificar possibilidades de ascensão vertical e horizontal na carreira, além
+          de ajudar a criar estratégias para tornar a vida no trabalho mais funcional e produtiva,
+          diminuindo o peso das responsabilidades e minimizando a possibilidade de um esgotamento
+          emocional proveniente do trabalho, conhecida por Síndrome de Burnout.
         </span>
         <div class="social-media">
           <a
@@ -67,18 +82,16 @@ reveal("aside .social-media a", 2500, 10, "bottom", 100, 50);
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url("/sobre/bg.jpeg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-color: var(--background);
+
   .sobre-content {
     display: flex;
-    padding: 3rem 1rem;
+    padding: 3rem 0rem;
     z-index: 2;
 
     aside {
       margin: 0 3rem;
-      max-width: 500px;
+      max-width: 850px;
       display: flex;
       flex-direction: column;
 
@@ -95,10 +108,11 @@ reveal("aside .social-media a", 2500, 10, "bottom", 100, 50);
       }
 
       .desc {
-        font-family: "WorkSansThin";
-        font-size: 1.3rem;
+        font-family: "WorkSansLight";
+        font-size: 1.1rem;
         font-weight: 400;
-        margin-bottom: 1.4rem;
+        opacity: 0.5;
+        margin-bottom: 1rem;
       }
 
       .social-media {
