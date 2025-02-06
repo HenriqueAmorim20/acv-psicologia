@@ -8,24 +8,16 @@ reveal(".psicoterapia section p", 2500, 30, "left", 200, 150);
       <Title title="psicoterapia" subtitle="O Processo Psicoterapêutico na ACV Psicologia" />
       <p>
         Na Ana Carolina Villaça Psicologia, o processo psicoterapêutico, conduzido pela Psicóloga
-        Ana Carolina Villaça, é fundamentado nos princípios da análise do comportamento e busca
-        compreender e promover mudanças nos padrões comportamentais de forma individualizada e
-        contextualizada. Diferentemente de abordagens que trabalham com objetivos genéricos, os
-        objetivos aqui não são arbitrários. Eles são construídos a partir de uma análise cuidadosa
-        da vida singular de cada pessoa, considerando sua história de vida, relações, ambiente e
-        demandas atuais.
+        Ana Carolina Villaça, baseia-se na análise do comportamento para compreender e promover
+        mudanças individualizadas nos padrões comportamentais. Os objetivos não são genéricos, mas
+        construídos a partir da história, relações e contexto de cada pessoa.
       </p>
       <p>
-        O processo psicoterapêutico na ACV Psicologia analisa a vida de maneira profunda e completa,
-        sem se prender a análises superficiais. Ele vai além de uma compreensão imediata da queixa,
-        buscando identificar as origens dos problemas e as contingências que mantêm os padrões de
-        comportamento atuais. Esses padrões não se limitam a comportamentos observáveis, mas
-        abrangem também pensamentos e sentimentos, que são igualmente considerados como eventos
-        comportamentais influenciados pelas experiências de vida e pelo contexto. Portanto, o
-        trabalho realizado na ACV Psicologia não deve ser confundido com uma técnica voltada apenas
-        para a solução de casos pontuais e específicos. O objetivo é promover mudanças
-        significativas e duradouras que proporcionem autonomia e adaptação frente às diversas
-        situações da vida.
+        O atendimento não se limita à queixa imediata, mas busca identificar as origens dos
+        problemas e as contingências que mantêm os padrões de comportamento. Pensamentos e
+        sentimentos também são considerados eventos comportamentais influenciados pelo contexto de
+        vida. O foco não é apenas solucionar questões pontuais, mas promover mudanças significativas
+        e duradouras.
       </p>
     </section>
     <aside></aside>

@@ -14,7 +14,7 @@ function scrollTop() {
     <section class="left">
       <h1 class="name">ana carolina villaça</h1>
       <span class="description">
-        Psicóloga Clínica e Organizacional com 10 anos de experiência
+        Psicóloga Clínica e Organizacional com 20 anos de experiência
       </span>
       <b class="crp">CRP: 01/12930</b>
       <div class="social-media">

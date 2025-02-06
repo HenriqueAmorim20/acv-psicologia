@@ -20,31 +20,17 @@ reveal("aside .social-media a", 2500, 10, "bottom", 100, 50);
       <aside>
         <h1 class="name" id="sobreName">Ana Carolina Villaça</h1>
         <b class="crp" id="sobreCrp">CRP: 01/12930</b>
+        <span class="desc"> Psicóloga Clínica com mais de 10 anos de atuação em clínica. </span>
         <span class="desc">
-          Psicóloga Clínica com mais de 10 anos de atuação em clínica, possui título de Especialista
-          em Análise do Comportamento e Terapia por Contingências de Reforçamento (TCR) pelo
-          Instituto de Terapia por Contingências de Campinas/SP.
+          Especialista em Análise do Comportamento e Terapia por Contingências de Reforçamento (TCR)
+          pelo Instituto de Terapia por Contingências de Campinas/SP.
         </span>
+        <span class="desc"> Pós-Graduação em Psicopatologias. </span>
         <span class="desc">
-          Psicóloga Organizacional com 10 anos de experiência, possui MBA em Gestão de Pessoa pela
-          Fundação Getúlio Vargas, tendo trabalhado em empresas de grande porte, nacionais e
-          multinacionais, com foco em Recrutamento e Seleção e Treinamento de pessoal, Mapeamento,
-          Desenho e Melhorias de Processos Organizacionais.
+          ⁠Psicóloga Organizacional com 10 anos de experiência e MBA em Gestão de Pessoa pela
+          Fundação Getúlio Vargas.
         </span>
-        <span class="desc">
-          Atende adultos, adolescentes e casal com foco em manejo de dilemas pessoais, dificuldades
-          em tomar decisões, ansiedade, depressão, obsessões, compulsões, fobias, automutilação,
-          déficit de autoestima, déficit de habilidades sociais, dentre outras condições
-          psicológicas e sociais, com o objetivo de tornar a vida de quem a procura a mais funcional
-          possível.
-        </span>
-        <span class="desc">
-          Também atende adultos que procuram melhorar sua performance no contexto profissional,
-          ajudando a identificar possibilidades de ascensão vertical e horizontal na carreira, além
-          de ajudar a criar estratégias para tornar a vida no trabalho mais funcional e produtiva,
-          diminuindo o peso das responsabilidades e minimizando a possibilidade de um esgotamento
-          emocional proveniente do trabalho, conhecida por Síndrome de Burnout.
-        </span>
+        <span class="desc"> ⁠Atendimento de adultos, adolescente s e casal.</span>
         <div class="social-media">
           <a
             class="link"
@@ -91,7 +77,7 @@ reveal("aside .social-media a", 2500, 10, "bottom", 100, 50);
 
     aside {
       margin: 0 3rem;
-      max-width: 850px;
+      max-width: 650px;
       display: flex;
       flex-direction: column;
 
