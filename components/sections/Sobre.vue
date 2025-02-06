@@ -10,7 +10,7 @@ reveal("aside .social-media a", 2500, 10, "bottom", 100, 50);
 
 <template>
   <div class="sobre" id="sobreSection">
-    <Title
+    <PageTitle
       title="sobre mim"
       subtitle="um pouco da minha história"
       color="var(--secondary)"

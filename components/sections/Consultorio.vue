@@ -7,7 +7,7 @@ reveal(".consultorio .btn", 2500, 0, "bottom", 0);
 
 <template>
   <div class="consultorio" id="consultorioSection">
-    <Title
+    <PageTitle
       title="consultório"
       subtitle="SCN Quadra 2, Shopping Liberty Mall, Torre B, Sala 521"
       color="var(--secondary)" />

@@ -5,7 +5,7 @@ reveal(".psicoterapia section p", 2500, 30, "left", 200, 150);
 <template>
   <div class="psicoterapia" id="psicoterapiaSection">
     <section>
-      <Title title="psicoterapia" subtitle="O Processo Psicoterapêutico na ACV Psicologia" />
+      <PageTitle title="psicoterapia" subtitle="O Processo Psicoterapêutico na ACV Psicologia" />
       <p>
         Na Ana Carolina Villaça Psicologia, o processo psicoterapêutico, conduzido pela Psicóloga
         Ana Carolina Villaça, baseia-se na análise do comportamento para compreender e promover

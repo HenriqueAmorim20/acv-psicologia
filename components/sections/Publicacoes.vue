@@ -12,7 +12,7 @@ reveal(".article-content", 2500, 0, "top", 400);
 
 <template>
   <div class="publicacoes" id="publicacoesSection">
-    <Title
+    <PageTitle
       title="publicações"
       subtitle="assuntos relevantes na psicoterapia"
       color="var(--secondary)" />

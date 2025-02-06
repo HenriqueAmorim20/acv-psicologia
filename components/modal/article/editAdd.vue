@@ -2,6 +2,7 @@
 import { Icon } from "@iconify/vue";
 const emit = defineEmits(["close", "fileChange", "fileUploading"]);
 const article = useSelectedArticle();
+const showLoading = ref(false);
 
 const handleArticle = async () => {
   if (
@@ -12,8 +13,11 @@ const handleArticle = async () => {
     !article.value.image.result
   )
     return;
+
+  showLoading.value = true;
   if (article.value.uuid?.length) await editArticle();
   else await addArticle();
+  showLoading.value = false;
   fetchArticles();
   emit("close");
 };
@@ -58,8 +62,6 @@ const editArticle = async () => {
 };
 
 const uploadFileToBucket = async () => {
-  console.log("debug upload", article.value.image.file);
-  console.log("debug upload", article.value.image.result);
   const { snapshot, downloadUrl, metadata } = await saveFile(
     "publicacoes/" + article.value.image?.file?.name,
     article.value.image?.result
@@ -72,7 +74,6 @@ const uploadFileToBucket = async () => {
 const onFileChange = async e => {
   let files = e.target.files || e.dataTransfer.files;
   if (!files.length) return;
-  console.log("debug file change", files[0]);
   article.value.image = await uploadFile(files[0]);
 };
 </script>
@@ -113,7 +114,8 @@ const onFileChange = async e => {
     </div>
     <div class="actions">
       <button class="btn delete" @click="$emit('close')">Cancelar</button>
-      <button class="btn" @click="handleArticle()">Salvar</button>
+      <button v-if="!showLoading" class="btn" @click="handleArticle()">Salvar</button>
+      <button v-if="showLoading" class="btn loading"><LoadingSpinner /></button>
     </div>
   </div>
 </template>
@@ -176,10 +178,20 @@ const onFileChange = async e => {
       background-color: var(--secondary);
       color: var(--background);
       margin-left: 1rem;
+      width: 120px;
 
       &:hover {
         background-color: var(--background);
         color: var(--secondary);
+      }
+
+      &.loading {
+        cursor: default;
+
+        &:hover {
+          background-color: var(--secondary);
+          color: var(--background);
+        }
       }
     }
 

@@ -16,7 +16,7 @@ const article = articles.value.filter(item => item.uuid === id)[0];
 <template>
   <div class="publicacao" v-if="article">
     <section class="bg-image" :style="`background-image: url(${article.image})`">
-      <Title :title="article.title" color="var(--secondary)" :subtitle="article.category" />
+      <PageTitle :title="article.title" color="var(--secondary)" :subtitle="article.category" />
     </section>
     <section class="content">
       <span class="date">{{ formatDate(article.date) }}</span>

@@ -55,7 +55,7 @@ const openModalEditAddArticle = ({ uuid, title, desc, category, image, date }): 
 <template>
   <div class="publicacoes" id="publicacoesPage">
     <section class="bg-image">
-      <Title
+      <PageTitle
         title="publicações"
         subtitle="assuntos relevantes na psicoterapia"
         color="var(--secondary)" />

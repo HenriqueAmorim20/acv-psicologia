@@ -18,7 +18,7 @@ const signOut = async () => {
 <template>
   <div class="admin">
     <form v-if="!user" @submit.prevent="signIn">
-      <Title title="admin" color="var(--secondary)" />
+      <PageTitle title="admin" color="var(--secondary)" />
       <div class="form-group">
         <input type="email" class="form-control" id="email" v-model="email" placeholder="email" />
         <Icon class="icon" icon="carbon:email" />
@@ -38,7 +38,7 @@ const signOut = async () => {
       <button type="submit">Login</button>
     </form>
     <div v-else class="card">
-      <Title :title="user.email" color="var(--secondary)" />
+      <PageTitle :title="user.email" color="var(--secondary)" />
       <button @click="signOut()">Logout</button>
     </div>
   </div>
