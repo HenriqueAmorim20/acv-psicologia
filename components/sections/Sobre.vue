@@ -15,6 +15,7 @@ reveal("aside .social-media a", 2500, 10, "bottom", 100, 50);
       subtitle="um pouco da minha história"
       color="var(--secondary)"
       style="z-index: 2" />
+
     <div class="sobre-content">
       <div class="image" id="sobreImage" />
       <aside>

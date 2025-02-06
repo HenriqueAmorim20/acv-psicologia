@@ -6,7 +6,7 @@ export const reveal = (
   delay: number,
   interval?: number
 ) => {
-  if (process.client)
+  if (import.meta.client) {
     ScrollReveal().reveal(element, {
       duration,
       distance: `${distance}px`,
@@ -15,4 +15,5 @@ export const reveal = (
       opacity: 0,
       interval: interval ? interval : 0,
     });
+  }
 };

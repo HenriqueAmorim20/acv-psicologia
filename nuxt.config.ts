@@ -1,5 +1,3 @@
-import { defineNuxtConfig } from "nuxt";
-
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
   app: {
@@ -18,19 +16,21 @@ export default defineNuxtConfig({
       script: [{ src: "https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js" }],
     },
   },
+
   css: ["~/assets/css/global.css"],
-  publicRuntimeConfig: {
-    FIREBASE_API_KEY: process.env.FIREBASE_API_KEY,
-    PROJECT_ID: process.env.PROJECT_ID,
-    PRIVATE_KEY: process.env.PRIVATE_KEY,
-    CLIENT_EMAIL: process.env.CLIENT_EMAIL,
-    STORAGE_BUCKET: process.env.STORAGE_BUCKET,
+  runtimeConfig: {
+    firabaseApiKey: process.env.FIREBASE_API_KEY,
+    projectId: process.env.PROJECT_ID,
+    privateKey: process.env.PRIVATE_KEY,
+    clientEmail: process.env.CLIENT_EMAIL,
+    storageBucket: process.env.STORAGE_BUCKET,
+    public: {
+      firabaseApiKey: process.env.FIREBASE_API_KEY,
+      projectId: process.env.PROJECT_ID,
+      privateKey: process.env.PRIVATE_KEY,
+      clientEmail: process.env.CLIENT_EMAIL,
+      storageBucket: process.env.STORAGE_BUCKET,
+    },
   },
-  privateRuntimeConfig: {
-    FIREBASE_API_KEY: process.env.FIREBASE_API_KEY,
-    PROJECT_ID: process.env.PROJECT_ID,
-    PRIVATE_KEY: process.env.PRIVATE_KEY,
-    CLIENT_EMAIL: process.env.CLIENT_EMAIL,
-    STORAGE_BUCKET: process.env.STORAGE_BUCKET,
-  },
+  compatibilityDate: "2025-02-05",
 });

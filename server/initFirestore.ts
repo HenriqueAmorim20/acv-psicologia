@@ -3,9 +3,9 @@ import { initializeApp, cert } from "firebase-admin/app";
 const config = useRuntimeConfig();
 
 const credentials = {
-  projectId: config.PROJECT_ID,
-  privateKey: config.PRIVATE_KEY.replace(/\\n/g, "\n"),
-  clientEmail: config.CLIENT_EMAIL,
+  projectId: config.projectId,
+  privateKey: config.privateKey.replace(/\\n/gm, "\n"),
+  clientEmail: config.clientEmail,
 };
 
 export const initFirestore = () => initializeApp({ credential: cert(credentials) });

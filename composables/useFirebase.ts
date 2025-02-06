@@ -1,10 +1,17 @@
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
-import { getStorage, ref, uploadString, getDownloadURL, getMetadata } from "firebase/storage";
+import {
+  getStorage,
+  ref,
+  uploadString,
+  getDownloadURL,
+  getMetadata,
+  type FirebaseStorage,
+} from "firebase/storage";
 import { initializeApp } from "firebase/app";
 
-let storage;
+let storage: FirebaseStorage;
 
-export const initFirebase = firebaseConfig => {
+export const initFirebase = (firebaseConfig: Record<string, unknown>) => {
   const firebaseApp = initializeApp(firebaseConfig);
   storage = getStorage(firebaseApp);
 };
@@ -32,6 +39,7 @@ export const signOutUser = async () => {
 export const initUser = async () => {
   const auth = getAuth();
   const firebaseUser = useFirebaseUser();
+
   firebaseUser.value = auth.currentUser;
 
   onAuthStateChanged(auth, user => {
@@ -39,7 +47,7 @@ export const initUser = async () => {
   });
 };
 
-export const uploadFile = async file => {
+export const uploadFile = async (file: Blob) => {
   return await new Promise(function (resolve, reject) {
     let reader = new FileReader();
     reader.readAsDataURL(file);
@@ -49,7 +57,7 @@ export const uploadFile = async file => {
   });
 };
 
-export const saveFile = async (fullPath, file) => {
+export const saveFile = async (fullPath: string, file: string) => {
   const storageRef = ref(storage, fullPath);
   const snapshot = await uploadString(storageRef, file, "data_url");
   if (snapshot) {
