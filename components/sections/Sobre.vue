@@ -31,7 +31,7 @@ reveal("aside .social-media a", 2500, 10, "bottom", 100, 50);
           ⁠Psicóloga Organizacional com 10 anos de experiência e MBA em Gestão de Pessoa pela
           Fundação Getúlio Vargas.
         </span>
-        <span class="desc"> ⁠Atendimento de adultos, adolescente s e casal.</span>
+        <span class="desc"> ⁠Atendimento de adultos, adolescentes e casal.</span>
         <div class="social-media">
           <a
             class="link"
