@@ -1,8 +1,6 @@
 export const fetchVideos = async (): Promise<void> => {
   try {
-    // const data = await $fetch("/api/videos");
-    // const videos = useVideos();
-    // videos.value = data;
+    return await $fetch("/api/videos");
   } catch (error) {
     console.log(error);
   }
@@ -24,14 +22,12 @@ export const updateVideo = async (id: string, url: string): Promise<void> => {
 
 export const fetchArticles = async (): Promise<any> => {
   try {
-    // let articlesDefault: any = await $fetch("/api/publicacoes");
-    // articlesDefault = articlesDefault.sort((a: { date: Date }, b: { date: Date }) => {
-    //   return new Date(b.date).getTime() - new Date(a.date).getTime();
-    // });
-    // const categories = [...new Set(articlesDefault.map((a: any) => a.category))].sort();
-    // const articles = useArticles();
-    // articles.value = articlesDefault;
-    return { articlesDefault: [], categories: [] };
+    let articlesDefault: any = await $fetch("/api/publicacoes");
+    articlesDefault = articlesDefault.sort((a: { date: Date }, b: { date: Date }) => {
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
+    });
+    const categories = [...new Set(articlesDefault.map((a: any) => a.category))].sort();
+    return { articlesDefault, categories };
   } catch (error) {
     console.log(error);
   }

@@ -12,7 +12,9 @@ const deleteArticle = async () => {
       "Content-Type": "application/json",
     },
   }).catch(err => console.log(err));
-  fetchArticles();
+  const data = await fetchArticles();
+  const articles = useArticles();
+  articles.value = data.articlesDefault;
   emit("close");
 };
 </script>

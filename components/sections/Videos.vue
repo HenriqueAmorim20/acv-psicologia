@@ -4,8 +4,9 @@ import { Icon } from "@iconify/vue";
 const admin = useFirebaseUser();
 
 // Fetch videos and get videos state
-fetchVideos();
+const videosPayload = await fetchVideos();
 const videos = useVideos();
+videos.value = videosPayload;
 
 // Get selected video state
 const selectedVideo = useSelectedVideo();

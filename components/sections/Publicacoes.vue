@@ -3,8 +3,9 @@ import { Icon } from "@iconify/vue";
 import { formatText, formatDate } from "@/composables/utils";
 
 // Fetch articles and get articles state
-fetchArticles();
+const data = await fetchArticles();
 const articles = useArticles();
+articles.value = data.articlesDefault;
 
 reveal(".publicacoes .btn", 2500, 0, "top", 200);
 reveal(".article-content", 2500, 0, "top", 400);

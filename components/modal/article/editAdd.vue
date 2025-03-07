@@ -18,7 +18,9 @@ const handleArticle = async () => {
   if (article.value.uuid?.length) await editArticle();
   else await addArticle();
   showLoading.value = false;
-  fetchArticles();
+  const data = await fetchArticles();
+  const articles = useArticles();
+  articles.value = data.articlesDefault;
   emit("close");
 };
 

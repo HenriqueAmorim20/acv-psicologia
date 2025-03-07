@@ -12,6 +12,7 @@ const user = useFirebaseUser();
 // Fetch articles, get articles state and categories
 const data = await fetchArticles();
 const articles = useArticles();
+articles.value = data.articlesDefault;
 
 const selectedArticle = useSelectedArticle();
 
